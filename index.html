@@ -45,7 +45,7 @@ background-size:64px 64px}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:200;background:rgba(6,14,26,0.94);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,201,141,0.08)}
-.nav-inner{max-width:100%;padding:0 clamp(16px,4vw,64px);display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0}
 .nav-mark{width:34px;height:34px;border-radius:7px;background:var(--emerald);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-mark svg{width:18px;height:18px;fill:var(--navy-2)}
@@ -66,18 +66,18 @@ nav{position:sticky;top:0;z-index:200;background:rgba(6,14,26,0.94);backdrop-fil
 .mobile-link:hover,.mobile-link.active{color:var(--emerald);background:var(--emerald-dim)}
 
 /* LAYOUT */
-.wrap{width:100%;padding:0 clamp(16px,4vw,64px)}
+.wrap{width:100%;max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,60px)}
 .section{padding:clamp(60px,8vw,120px) 0}
 
 /* HERO */
-.hero{padding:clamp(80px,10vw,140px) 0 clamp(60px,8vw,100px)}
+.hero{padding:clamp(80px,10vw,140px) 0 clamp(60px,8vw,100px)}.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center}@media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--emerald);letter-spacing:2px;text-transform:uppercase;background:var(--emerald-dim);border:1px solid rgba(0,201,141,0.2);padding:6px 14px;border-radius:20px;margin-bottom:28px}
 .hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--emerald);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(44px,6vw,82px);font-weight:800;line-height:1.05;letter-spacing:0.01em;margin-bottom:24px}
 .hero-title .em{color:var(--emerald)}
 .hero-title .dim{color:var(--t3)}
-.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--t2);max-width:640px;line-height:1.7;margin-bottom:48px;font-weight:300}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:var(--t2);max-width:720px;line-height:1.7;margin-bottom:48px;font-weight:300}
 .hero-stats{display:flex;gap:clamp(24px,4vw,56px);flex-wrap:wrap;margin-bottom:52px}
 .stat-num{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,4vw,46px);font-weight:800;color:var(--white);line-height:1;letter-spacing:0.02em}
 .stat-num span{color:var(--emerald)}
@@ -93,13 +93,13 @@ nav{position:sticky;top:0;z-index:200;background:rgba(6,14,26,0.94);backdrop-fil
 /* SECTION LABEL */
 .sec-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:var(--emerald);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
 .sec-title{font-family:'Syne',sans-serif;font-size:clamp(26px,3.5vw,44px);font-weight:700;line-height:1.12;letter-spacing:-1px;margin-bottom:16px}
-.sec-desc{font-size:16px;color:var(--t2);max-width:560px;font-weight:300;line-height:1.7}
+.sec-desc{font-size:16px;color:var(--t2);max-width:680px;font-weight:300;line-height:1.7}
 
 /* DIVIDERS */
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,201,141,0.12),transparent);margin:0}
 
 /* FEATURE CARDS */
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:20px}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}@media(max-width:900px){.feat-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
 .feat-card{background:rgba(15,32,53,0.7);border:1px solid rgba(0,201,141,0.12);border-radius:14px;padding:clamp(20px,3vw,28px);transition:all 0.3s;position:relative;overflow:hidden;backdrop-filter:blur(8px)}
 .feat-card:hover{border-color:rgba(0,201,141,0.35);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
 .feat-icon{width:42px;height:42px;border-radius:10px;background:var(--emerald-dim);border:1px solid rgba(0,201,141,0.18);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
@@ -113,7 +113,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(6,14,26,0.94);backdrop-fil
 .cobrain-fade{position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,0.4));pointer-events:none}
 
 /* PROMPT CARDS */
-.prompt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:20px}
+.prompt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}@media(max-width:1100px){.prompt-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:660px){.prompt-grid{grid-template-columns:1fr}}
 .p-card{background:rgba(15,32,53,0.8);border:1px solid var(--cb);border-radius:14px;padding:clamp(18px,2.5vw,24px);transition:all 0.3s;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
 .p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);opacity:0;transition:opacity 0.3s}
 .p-card:hover{border-color:var(--cbh);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,0.35)}
@@ -154,7 +154,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(6,14,26,0.94);backdrop-fil
 .srch-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--t3);font-size:16px;pointer-events:none}
 
 /* GPT CARDS */
-.gpt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:20px}
+.gpt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}@media(max-width:900px){.gpt-grid{grid-template-columns:1fr}}
 .gpt-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:clamp(20px,3vw,28px);transition:all 0.3s;position:relative}
 .gpt-card:hover{border-color:rgba(0,201,141,0.25);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
 .gpt-num-badge{display:inline-flex;align-items:center;gap:6px;font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:#34D399;letter-spacing:1px;text-transform:uppercase;background:rgba(16,185,129,0.08);border:1px solid rgba(52,211,153,0.18);padding:4px 10px;border-radius:20px;margin-bottom:14px}
@@ -181,7 +181,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(6,14,26,0.94);backdrop-fil
 .cobrain-section-title{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--emerald);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(0,201,141,0.1)}
 
 /* HOW TO */
-.howto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:16px}
+.howto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}@media(max-width:900px){.howto-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.howto-grid{grid-template-columns:1fr}}
 .howto-card{background:rgba(15,32,53,0.5);border:1px solid rgba(255,255,255,0.05);border-radius:12px;padding:clamp(18px,2.5vw,24px)}
 .howto-n{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:rgba(0,201,141,0.12);line-height:1;margin-bottom:12px}
 .howto-t{font-family:'Syne',sans-serif;font-size:15px;font-weight:600;margin-bottom:8px}
@@ -225,7 +225,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
 .count-badge{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--emerald);color:var(--navy-2);font-size:10px;font-weight:700;font-family:'DM Mono',monospace;margin-left:5px}
 
 /* SNIPPET CARDS */
-.snippet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:20px}
+.snippet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}@media(max-width:900px){.snippet-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.snippet-grid{grid-template-columns:1fr}}
 .snippet-card{background:rgba(15,32,53,0.7);border:1px solid rgba(0,201,141,0.1);border-radius:14px;padding:clamp(20px,3vw,28px);transition:all 0.3s;cursor:pointer}
 .snippet-card:hover{border-color:rgba(0,201,141,0.35);transform:translateY(-3px)}
 .snip-num{font-family:'Syne',sans-serif;font-size:42px;font-weight:800;color:rgba(0,201,141,0.1);line-height:1;margin-bottom:12px}
@@ -243,6 +243,14 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
 .hv-chip.lit{background:var(--emerald-dim);border-color:rgba(0,201,141,0.3);color:var(--emerald)}
 
 /* RESPONSIVE */
+.hero-left{flex:1}
+.hero-right{flex:1;display:flex;align-items:center;justify-content:center}
+.hero-card-stack{display:flex;flex-direction:column;gap:14px;width:100%;max-width:420px}
+.hero-card{background:rgba(15,32,53,0.8);border:1px solid rgba(0,201,141,0.12);border-radius:12px;padding:20px 22px;backdrop-filter:blur(10px)}
+.hc1{border-color:rgba(0,201,141,0.25)}
+.hc2{transform:translateX(20px)}
+.hc3{transform:translateX(10px)}
+@media(max-width:900px){.hero-right{display:none}}
 @media(max-width:768px){
   .nav-links,.nav-badge,.nav-cta{display:none}
   .hamburger{display:block}
@@ -305,22 +313,43 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
   <!-- HERO -->
   <div class="wrap">
     <section class="hero">
-      <div class="hero-eyebrow fade-up d1">Blue Nose AI Command Center</div>
-      <h1 class="hero-title fade-up d2">
-        Every tool your<br>
-        <span class="em">franchise needs.</span><br>
-        <span class="dim">All in one place.</span>
-      </h1>
-      <p class="hero-sub fade-up d3">A complete AI operating system built exclusively for Blue Nose Aerial Imaging franchisees. From the field to the front office, from cold outreach to final report delivery. Powered by Global Air U <span style="font-weight:600;letter-spacing:0.5px;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span>.</p>
-      <div class="hero-stats fade-up d4">
-        <div><div class="stat-num">50<span>+</span></div><div class="stat-lbl">Master Prompts</div></div>
-        <div><div class="stat-num">5</div><div class="stat-lbl">AI Power Tools</div></div>
-        <div><div class="stat-num">1</div><div class="stat-lbl">Co-Brain System</div></div>
-        <div><div class="stat-num">2</div><div class="stat-lbl">Platforms Covered</div></div>
-      </div>
-      <div class="hero-btns fade-up d5">
-        <button class="btn-p" onclick="showPage('cobrain')">Start with the Co-Brain <span class="arr">&#8594;</span></button>
-        <button class="btn-s" onclick="showPage('prompts')">Browse Prompts</button>
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-eyebrow fade-up d1">Blue Nose AI Command Center</div>
+          <h1 class="hero-title fade-up d2">
+            Every tool your<br>
+            <span class="em">franchise needs.</span><br>
+            <span class="dim">All in one place.</span>
+          </h1>
+          <p class="hero-sub fade-up d3">A complete AI operating system built exclusively for Blue Nose Aerial Imaging franchisees. From the field to the front office, from cold outreach to final report delivery. Powered by Global Air U <span style="font-weight:600;letter-spacing:0.5px;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span>.</p>
+          <div class="hero-stats fade-up d4">
+            <div><div class="stat-num">50<span>+</span></div><div class="stat-lbl">Master Prompts</div></div>
+            <div><div class="stat-num">5</div><div class="stat-lbl">AI Power Tools</div></div>
+            <div><div class="stat-num">1</div><div class="stat-lbl">Co-Brain System</div></div>
+            <div><div class="stat-num">2</div><div class="stat-lbl">Platforms Covered</div></div>
+          </div>
+          <div class="hero-btns fade-up d5">
+            <button class="btn-p" onclick="showPage('cobrain')">Start with the Co-Brain <span class="arr">&#8594;</span></button>
+            <button class="btn-s" onclick="showPage('prompts')">Browse Prompts</button>
+          </div>
+        </div>
+        <div class="hero-right fade-up d4">
+          <div class="hero-card-stack">
+            <div class="hero-card hc1">
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--emerald);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Co-Brain Active</div>
+              <div style="font-size:13px;color:var(--t2);line-height:1.6">Blue Nose context loaded. Professional airline and military pilots. FAA Part 107 certified. Veteran-owned. 34 franchise locations nationwide.</div>
+              <div style="margin-top:12px;display:flex;align-items:center;gap:8px"><div style="width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:blink 2s infinite"></div><span style="font-size:12px;color:var(--emerald)">AI fully briefed on Blue Nose</span></div>
+            </div>
+            <div class="hero-card hc2">
+              <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Prompt Ready</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--t2);line-height:1.7">ROLE: Blue Nose building inspection specialist...<br>MISSION: Convert field notes into professional report...<br>OUTPUT: Executive summary, findings by area, risk matrix...</div>
+            </div>
+            <div class="hero-card hc3">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase">Output Generated</span><span style="font-size:10px;color:var(--emerald);background:var(--emerald-dim);padding:2px 8px;border-radius:10px;border:1px solid rgba(0,201,141,0.2)">Ready to send</span></div>
+              <div style="font-size:12px;color:var(--t2);line-height:1.6">Blue Nose Commercial Building Inspection Report<br><span style="color:var(--t3)">3 critical findings. Risk matrix complete. Action plan attached.</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
