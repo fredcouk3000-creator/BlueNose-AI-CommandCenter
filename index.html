@@ -46,12 +46,12 @@ background-size:64px 64px}
 /* NAV */
 nav{position:sticky;top:0;z-index:200;width:100%;background:rgba(6,14,26,0.94);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,201,141,0.08)}
 .nav-inner{max-width:1400px;margin:0 auto;padding:0 clamp(12px,4vw,60px);display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
-.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer;flex-shrink:0;order:1}
 .nav-mark{width:34px;height:34px;border-radius:7px;background:var(--emerald);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .nav-mark svg{width:18px;height:18px;fill:var(--navy-2)}
 .nav-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;letter-spacing:-0.2px}
 .nav-brand em{color:var(--emerald);font-style:normal}
-.nav-links{display:flex;gap:4px;flex:1;justify-content:center}
+.nav-links{display:flex;gap:4px;flex:1;justify-content:center;order:3}
 .nav-link{background:none;border:none;color:var(--t2);font-family:'DM Sans',sans-serif;font-size:14px;padding:7px 16px;border-radius:6px;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .nav-link:hover{color:var(--white);background:rgba(255,255,255,0.05)}
 .nav-link.active{color:var(--emerald);background:var(--emerald-dim)}
@@ -59,8 +59,8 @@ nav{position:sticky;top:0;z-index:200;width:100%;background:rgba(6,14,26,0.94);b
 .nav-badge{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--emerald);background:var(--emerald-dim);border:1px solid rgba(0,201,141,0.25);padding:4px 10px;border-radius:20px;letter-spacing:0.5px;white-space:nowrap}
 .nav-cta{background:var(--emerald);color:var(--navy-2);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:8px 18px;border-radius:6px;border:none;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .nav-cta:hover{background:var(--emerald-dk);transform:translateY(-1px)}
-.hamburger{display:none;background:none;border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:7px 10px;cursor:pointer;color:var(--t2)}
-.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;width:100%;background:rgba(6,14,26,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,201,141,0.1);padding:12px;z-index:199;flex-direction:column;gap:4px;box-sizing:border-box}
+.hamburger{display:none;background:none;border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:7px 10px;cursor:pointer;color:var(--t2);order:2}
+.mobile-menu{display:none;position:fixed;top:108px;left:0;right:0;width:100%;background:rgba(6,14,26,0.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,201,141,0.1);padding:12px;z-index:199;flex-direction:column;gap:4px;box-sizing:border-box}
 .mobile-menu.open{display:flex}
 .mobile-link{background:none;border:none;color:var(--t2);font-family:'DM Sans',sans-serif;font-size:15px;padding:12px 16px;border-radius:8px;cursor:pointer;text-align:left;width:100%;transition:all 0.2s}
 .mobile-link:hover,.mobile-link.active{color:var(--emerald);background:var(--emerald-dim)}
@@ -271,8 +271,16 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
 }
 @media(max-width:480px){
   .wrap{padding:0 12px}
-  .nav-inner{padding:0 12px}
   body{overflow-x:hidden}
+  nav{height:auto}
+  .nav-inner{padding:0;flex-wrap:wrap;height:auto;gap:0}
+  .nav-logo{padding:10px 12px;flex:1}
+  .hamburger{display:flex !important;align-items:center;margin-right:12px;margin-top:2px}
+  .nav-links{display:flex !important;order:3;width:100%;padding:4px 12px 10px;gap:2px;border-top:1px solid rgba(255,255,255,0.06);justify-content:space-between}
+  .nav-link{font-size:11px;padding:5px 8px}
+  .nav-cta{display:none}
+  .nav-right{order:4;display:none !important}
+  .nav-eq-badge{font-size:10px !important;padding:4px 10px !important;white-space:nowrap}
   .hero{padding:40px 0 32px}
   .section{padding:40px 0}
   .hero-title{font-size:36px;letter-spacing:-0.01em;line-height:1.1}
@@ -344,7 +352,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
       <button class="nav-link" id="nl-tools" onclick="showPage('tools')">AI Tools</button>
     </div>
     <div class="nav-right">
-      <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.8px;background:rgba(15,32,53,0.8);border:1px solid rgba(0,201,141,0.3);padding:5px 12px;border-radius:20px;white-space:nowrap;">Powered by Global Air U <span style="font-weight:700;letter-spacing:0.5px;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span></div>
+      <div class="nav-eq-badge" style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.8px;background:rgba(15,32,53,0.8);border:1px solid rgba(0,201,141,0.3);padding:5px 12px;border-radius:20px;white-space:nowrap;">Powered by Global Air U <span style="font-weight:700;letter-spacing:0.5px;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span></div>
       <button class="nav-cta" onclick="showPage('prompts')">Get Started</button>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
     </div>
