@@ -357,6 +357,288 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
 </style>
 </head>
 <body>
+<!-- ══ ACCESS GATE ═══════════════════════════════════════════════════════ -->
+<div id="gau-gate" style="
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;position:fixed;inset:0;z-index:9999;
+  background:#060E1A;
+  background-image:radial-gradient(ellipse 60% 50% at 30% 20%,rgba(0,201,141,0.06) 0%,transparent 60%);
+">
+  <div style="
+    background:rgba(15,32,53,0.9);border:1px solid rgba(0,201,141,0.2);
+    border-radius:16px;padding:clamp(28px,5vw,44px);width:92%;max-width:420px;
+    backdrop-filter:blur(20px);
+  ">
+    <div style="margin-bottom:22px;text-align:center">
+      <div id="gate-logo-wrap" style="margin-bottom:14px"></div>
+      <div style="font-family:'DM Mono',monospace;font-size:11px;color:#00C98D;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">Blue Nose AI Command Center</div>
+      <div style="font-family:'Syne',sans-serif;font-size:21px;font-weight:800;letter-spacing:-0.3px;margin-bottom:5px">Franchisee Access</div>
+      <div style="font-size:13px;color:#9BB5CC">Select your location and enter your access code</div>
+    </div>
+
+    <div style="font-size:11px;color:#5A7590;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px">Your Franchise Location</div>
+    <select id="gate-location" style="
+      width:100%;background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.1);
+      border-radius:8px;color:#FFFFFF;font-family:'DM Sans',sans-serif;
+      font-size:14px;padding:12px 14px;outline:none;margin-bottom:14px;
+      transition:border-color 0.2s;box-sizing:border-box;cursor:pointer;
+      appearance:none;-webkit-appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239BB5CC' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 14px center;
+    "
+    onfocus="this.style.borderColor='rgba(0,201,141,0.4)'"
+    onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+      <option value="">Select your location...</option>
+          <option value="Blue Nose HQ" data-owner="Tanner Harris" data-hq="true">Blue Nose HQ — Tanner Harris</option>
+          <option disabled>────────────────────────</option>
+          <option value="Raleigh, NC" data-owner="Mack Carter">Raleigh, NC — Mack Carter</option>
+          <option value="Houston, TX" data-owner="Gerrit Warnshuis">Houston, TX — Gerrit Warnshuis</option>
+          <option value="Austin, TX" data-owner="Mike Benet">Austin, TX — Mike Benet</option>
+          <option value="Treasure Valley, ID" data-owner="Chris Krull">Treasure Valley, ID — Chris Krull</option>
+          <option value="Chicago Southland, IL" data-owner="Craig Sline">Chicago Southland, IL — Craig Sline</option>
+          <option value="Orlando, FL" data-owner="John Bartholomew">Orlando, FL — John Bartholomew</option>
+          <option value="Omaha, NE" data-owner="James Schneider">Omaha, NE — James Schneider</option>
+          <option value="Centreville, VA" data-owner="Adam Valdes">Centreville, VA — Adam Valdes</option>
+          <option value="Charlotte, NC" data-owner="Rick Ellenburg">Charlotte, NC — Rick Ellenburg</option>
+          <option value="North Charleston, SC" data-owner="Jay Aldea">North Charleston, SC — Jay Aldea</option>
+          <option value="Escondido, CA" data-owner="Reinaldo Adam Noel">Escondido, CA — Reinaldo Adam Noel</option>
+          <option value="Phoenix Metro, AZ" data-owner="Dean Wirtz">Phoenix Metro, AZ — Dean Wirtz</option>
+          <option value="San Antonio, TX" data-owner="Chris Menne">San Antonio, TX — Chris Menne</option>
+          <option value="Overland Park, KS" data-owner="Matt Clark">Overland Park, KS — Matt Clark</option>
+          <option value="West Babylon, NY" data-owner="Jon Turegun">West Babylon, NY — Jon Turegun</option>
+          <option value="Granbury, TX" data-owner="Cody Blair">Granbury, TX — Cody Blair</option>
+          <option value="Highland, NY" data-owner="Paul Ronan">Highland, NY — Paul Ronan</option>
+          <option value="Nashville, TN" data-owner="Mike Abernathy">Nashville, TN — Mike Abernathy</option>
+          <option value="Phoenix, AZ" data-owner="Mike Johnson">Phoenix, AZ — Mike Johnson</option>
+          <option value="Ventura County, CA" data-owner="Troy Ingram">Ventura County, CA — Troy Ingram</option>
+          <option value="Chandler, AZ" data-owner="Matt Nathan">Chandler, AZ — Matt Nathan</option>
+          <option value="Las Vegas, NV" data-owner="Mick Spice">Las Vegas, NV — Mick Spice</option>
+          <option value="Bellevue, WA" data-owner="Brian Berckmann">Bellevue, WA — Brian Berckmann</option>
+          <option value="Charleston, SC" data-owner="Cody Hendrick">Charleston, SC — Cody Hendrick</option>
+          <option value="Roswell, GA" data-owner="Dan O'Byrne">Roswell, GA — Dan O'Byrne</option>
+          <option value="Fort Worth, TX" data-owner="Nathan Bricker">Fort Worth, TX — Nathan Bricker</option>
+          <option value="Castle Pines, CO" data-owner="Scott Wallace">Castle Pines, CO — Scott Wallace</option>
+          <option value="Chicago, IL" data-owner="Michael Barca">Chicago, IL — Michael Barca</option>
+          <option value="Springfield, MO" data-owner="Ethan Miller">Springfield, MO — Ethan Miller</option>
+          <option value="Windsor, CO" data-owner="Kris Melton">Windsor, CO — Kris Melton</option>
+          <option value="Saint Charles, MO" data-owner="Matt Stacker">Saint Charles, MO — Matt Stacker</option>
+          <option value="Spokane, WA" data-owner="Paul McMakin">Spokane, WA — Paul McMakin</option>
+          <option value="Durham, NC" data-owner="Thomas Strom">Durham, NC — Thomas Strom</option>
+          <option value="Saint Charles, IL" data-owner="Jerry Sever">Saint Charles, IL — Jerry Sever</option>
+          <option value="Miami, FL" data-owner="Edward Figueroa">Miami, FL — Edward Figueroa</option>
+          <option value="Louisville, KY" data-owner="John Fulton">Louisville, KY — John Fulton</option>
+          <option value="Knoxville, TN" data-owner="Dave Watts">Knoxville, TN — Dave Watts</option>
+          <option value="Tampa Bay, FL" data-owner="Rob Smith">Tampa Bay, FL — Rob Smith</option>
+          <option value="Temecula, CA" data-owner="Barry Paul">Temecula, CA — Barry Paul</option>
+          <option value="Sumter, SC" data-owner="Chuck Overby">Sumter, SC — Chuck Overby</option>
+          <option value="Denver, CO" data-owner="Mike Mazzone">Denver, CO — Mike Mazzone</option>
+          <option value="Chattanooga, TN" data-owner="Billy Merop">Chattanooga, TN — Billy Merop</option>
+          <option value="El Paso, TX" data-owner="Trevor Blake">El Paso, TX — Trevor Blake</option>
+          <option value="Lebanon, VA" data-owner="Jeremy Hill">Lebanon, VA — Jeremy Hill</option>
+          <option value="Savannah, GA" data-owner="Will Schaffner">Savannah, GA — Will Schaffner</option>
+          <option value="Abilene, TX" data-owner="James Snelson">Abilene, TX — James Snelson</option>
+          <option value="Bloomington, IL" data-owner="Roger Bell">Bloomington, IL — Roger Bell</option>
+          </select>
+
+    <div style="font-size:11px;color:#5A7590;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:6px">Access Code</div>
+    <input
+      type="password"
+      id="gate-input"
+      placeholder="Enter your access code"
+      style="
+        width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);
+        border-radius:8px;color:#FFFFFF;font-family:'DM Sans',sans-serif;
+        font-size:15px;padding:13px 16px;outline:none;margin-bottom:14px;
+        transition:border-color 0.2s;box-sizing:border-box;
+      "
+      onkeydown="if(event.key==='Enter')gauCheckAccess()"
+      onfocus="this.style.borderColor='rgba(0,201,141,0.4)'"
+      onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+    >
+    <button
+      onclick="gauCheckAccess()"
+      style="
+        width:100%;background:#00C98D;color:#0B1829;
+        font-family:'DM Sans',sans-serif;font-size:15px;font-weight:500;
+        padding:13px;border-radius:8px;border:none;cursor:pointer;
+        transition:all 0.2s;
+      "
+      onmouseover="this.style.background='#00A874'"
+      onmouseout="this.style.background='#00C98D'"
+    >Access Command Center</button>
+
+    <div id="gate-err-location" style="font-size:13px;color:#FF4757;text-align:center;margin-top:10px;display:none">
+      Please select your franchise location to continue.
+    </div>
+    <div id="gate-err" style="font-size:13px;color:#FF4757;text-align:center;margin-top:10px;display:none">
+      Incorrect access code. Contact your franchise coordinator.
+    </div>
+    <div id="gate-suspended" style="font-size:13px;color:#FF4757;text-align:center;margin-top:10px;display:none;line-height:1.6">
+      Access to this platform is currently suspended.<br>
+      <span style="color:#9BB5CC">Please contact Global Air U at globalairu.com</span>
+    </div>
+
+    <div style="margin-top:20px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.06);text-align:center">
+      <div style="font-size:11px;color:#5A7590">Powered by Global Air U <strong style="color:#FFFFFF">EQUALIZ</strong><strong style="color:#00C98D">(R)</strong></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══ GAU ACCESS CONTROL + USAGE TRACKER ═══════════════════════════════════
+const GAU_CLIENT_ID = 'bluenose';
+const GAU_CLIENT_PASSWORD = 'BlueNose2026';
+
+let gauSessionStart = null;
+let gauCurrentPage = 'Home';
+let gauPagesVisited = 0;
+let gauSessionId = null;
+let gauFranchiseLocation = '';
+
+function gauGetConfig() {
+  try {
+    const raw = localStorage.getItem('gau_access_config');
+    if (raw) {
+      const config = JSON.parse(raw);
+      if (config[GAU_CLIENT_ID]) return config[GAU_CLIENT_ID];
+    }
+  } catch(e) {}
+  return { active: true, password: GAU_CLIENT_PASSWORD };
+}
+
+function gauGetHQPassword() {
+  try {
+    const raw = localStorage.getItem('gau_access_config');
+    if (raw) {
+      const config = JSON.parse(raw);
+      if (config[GAU_CLIENT_ID] && config[GAU_CLIENT_ID].hqPassword) {
+        return config[GAU_CLIENT_ID].hqPassword;
+      }
+    }
+  } catch(e) {}
+  return 'BlueNoseHQ2026'; // fallback HQ password
+}
+
+function gauCheckAccess() {
+  const location = document.getElementById('gate-location').value;
+  const input = document.getElementById('gate-input').value;
+  const config = gauGetConfig();
+
+  document.getElementById('gate-err-location').style.display = 'none';
+  document.getElementById('gate-err').style.display = 'none';
+  document.getElementById('gate-suspended').style.display = 'none';
+
+  if (!location) {
+    document.getElementById('gate-err-location').style.display = 'block';
+    return;
+  }
+
+  if (!config.active) {
+    document.getElementById('gate-suspended').style.display = 'block';
+    return;
+  }
+
+  // HQ gets a different password
+  const hqPassword = gauGetHQPassword();
+  const isHQ = location === 'Blue Nose HQ';
+  const correctPassword = isHQ ? hqPassword : config.password;
+
+  if (input === correctPassword) {
+    gauFranchiseLocation = location;
+    sessionStorage.setItem('gau_access_' + GAU_CLIENT_ID, 'granted');
+    sessionStorage.setItem('gau_location_' + GAU_CLIENT_ID, location);
+    document.getElementById('gau-gate').style.display = 'none';
+    gauStartSession();
+  } else {
+    document.getElementById('gate-err').style.display = 'block';
+    document.getElementById('gate-input').value = '';
+  }
+}
+
+function gauStartSession() {
+  gauSessionStart = new Date();
+  gauSessionId = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+  gauPagesVisited = 1;
+  gauLogSession(false);
+}
+
+function gauLogSession(isFinal) {
+  if (!gauSessionStart) return;
+  const now = new Date();
+  const durationMins = Math.round((now - gauSessionStart) / 60000);
+  const session = {
+    id: gauSessionId,
+    clientId: GAU_CLIENT_ID,
+    franchiseLocation: gauFranchiseLocation,
+    loginTime: gauSessionStart.toISOString(),
+    lastUpdate: now.toISOString(),
+    durationMins: durationMins,
+    lastPage: gauCurrentPage,
+    pagesVisited: gauPagesVisited
+  };
+  try {
+    const raw = localStorage.getItem('gau_admin_data');
+    if (raw) {
+      const data = JSON.parse(raw);
+      const idx = data.sessions.findIndex(s => s.id === gauSessionId);
+      if (idx > -1) data.sessions[idx] = session;
+      else data.sessions.push(session);
+      if (data.sessions.length > 1000) data.sessions = data.sessions.slice(-1000);
+      localStorage.setItem('gau_admin_data', JSON.stringify(data));
+    }
+  } catch(e) {}
+}
+
+setInterval(() => { if (gauSessionStart) gauLogSession(false); }, 120000);
+window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSession(true); });
+
+(function gauInit() {
+  const config = gauGetConfig();
+  try {
+    const mainLogo = document.querySelector('img[alt="Blue Nose Aerial Imaging"]');
+    if (mainLogo) {
+      const gateLogoWrap = document.getElementById('gate-logo-wrap');
+      const clone = mainLogo.cloneNode(true);
+      clone.style.cssText = 'height:38px;width:auto;display:block;margin:0 auto';
+      gateLogoWrap.appendChild(clone);
+    }
+  } catch(e) {}
+
+  // Load any custom locations added by GAU admin panel
+  try {
+    const raw = localStorage.getItem('gau_extra_locations');
+    if (raw) {
+      const extras = JSON.parse(raw);
+      const select = document.getElementById('gate-location');
+      if (select && extras.length) {
+        // Add a separator
+        const sep = document.createElement('option');
+        sep.disabled = true;
+        sep.textContent = '── New Locations ──';
+        select.appendChild(sep);
+        extras.forEach(loc => {
+          const opt = document.createElement('option');
+          opt.value = loc.location;
+          opt.textContent = loc.location + (loc.owner && loc.owner !== 'TBC' ? ' — ' + loc.owner : '');
+          select.appendChild(opt);
+        });
+      }
+    }
+  } catch(e) {}
+
+  if (!config.active) {
+    document.getElementById('gate-suspended').style.display = 'block';
+    return;
+  }
+  const granted = sessionStorage.getItem('gau_access_' + GAU_CLIENT_ID);
+  const savedLoc = sessionStorage.getItem('gau_location_' + GAU_CLIENT_ID);
+  if (granted === 'granted' && savedLoc) {
+    gauFranchiseLocation = savedLoc;
+    document.getElementById('gau-gate').style.display = 'none';
+    gauStartSession();
+  }
+})();
+</script>
 
 <div class="bg-layer"></div>
 <div class="bg-grid"></div>
@@ -2455,6 +2737,12 @@ function showPage(p) {
   const ml = document.getElementById('ml-' + p);
   if (ml) ml.classList.add('active');
   window.scrollTo(0, 0);
+  // Track page visit
+  if (typeof gauSessionStart !== 'undefined' && gauSessionStart) {
+    gauCurrentPage = p.charAt(0).toUpperCase() + p.slice(1);
+    gauPagesVisited++;
+    gauLogSession(false);
+  }
 }
 
 function toggleMenu() {
