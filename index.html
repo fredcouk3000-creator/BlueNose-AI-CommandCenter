@@ -485,65 +485,111 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
 </div>
 
 <script>
-// ══ GAU ACCESS CONTROL + USAGE TRACKER ═══════════════════════════════════
+// ══ GAU ACCESS CONTROL + USAGE TRACKER (Supabase) ═══════════════════════
 const GAU_CLIENT_ID = 'bluenose';
 const GAU_CLIENT_PASSWORD = 'BlueNose2026';
+const SUPABASE_URL = 'https://soridoreioklphpraehm.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvcmlkb3JlaW9rbHBocHJhZWhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0NzY2NDEsImV4cCI6MjA5NTA1MjY0MX0.4F6r_1zbJAPZ3-VoWglDt4TNr1Nco_5--aAfZ-lyrlk';
 
 let gauSessionStart = null;
 let gauCurrentPage = 'Home';
 let gauPagesVisited = 0;
 let gauSessionId = null;
 let gauFranchiseLocation = '';
+let gauClientConfig = null;
+let gauLocations = [];
 
-function gauGetConfig() {
-  try {
-    const raw = localStorage.getItem('gau_access_config');
-    if (raw) {
-      const config = JSON.parse(raw);
-      if (config[GAU_CLIENT_ID]) return config[GAU_CLIENT_ID];
+// ── SUPABASE HELPERS ──────────────────────────────────────────────────────
+async function sbFetch(path, opts = {}) {
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    ...opts,
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': opts.prefer || '',
+      ...( opts.headers || {} )
     }
-  } catch(e) {}
-  return { active: true, password: GAU_CLIENT_PASSWORD };
+  });
+  if (!res.ok && res.status !== 404) {
+    const t = await res.text();
+    console.warn('Supabase error', res.status, t.substring(0,200));
+  }
+  const text = await res.text();
+  try { return text ? JSON.parse(text) : null; } catch(e) { return null; }
 }
 
-function gauGetHQPassword() {
+// ── CONFIG FROM SUPABASE ──────────────────────────────────────────────────
+async function gauLoadConfig() {
   try {
-    const raw = localStorage.getItem('gau_access_config');
-    if (raw) {
-      const config = JSON.parse(raw);
-      if (config[GAU_CLIENT_ID] && config[GAU_CLIENT_ID].hqPassword) {
-        return config[GAU_CLIENT_ID].hqPassword;
-      }
+    const data = await sbFetch('gau_clients?id=eq.' + GAU_CLIENT_ID + '&select=active,password,hq_password');
+    if (data && data.length > 0) {
+      gauClientConfig = data[0];
+      return gauClientConfig;
     }
-  } catch(e) {}
-  return 'BlueNoseHQ2026'; // fallback HQ password
+  } catch(e) { console.log('Supabase config not available, using defaults'); }
+  return { active: true, password: GAU_CLIENT_PASSWORD, hq_password: 'BlueNoseHQ2026' };
 }
 
+// ── LOAD LOCATIONS FROM SUPABASE ──────────────────────────────────────────
+async function gauLoadLocations() {
+  try {
+    const data = await sbFetch('gau_locations?client_id=eq.' + GAU_CLIENT_ID + '&order=is_hq.desc,id.asc&select=location,owner,is_hq');
+    if (data && data.length > 0) {
+      gauLocations = data;
+      return data;
+    }
+  } catch(e) { console.log('Supabase locations not available, using built-in list'); }
+  return [];
+}
+
+// ── POPULATE DROPDOWN ─────────────────────────────────────────────────────
+function gauPopulateDropdown(locations) {
+  const select = document.getElementById('gate-location');
+  if (!select || !locations.length) return;
+  // Clear existing options except the first placeholder
+  while (select.options.length > 1) select.remove(1);
+  // Add HQ first with separator
+  const hqLocs = locations.filter(l => l.is_hq);
+  const regLocs = locations.filter(l => !l.is_hq);
+  hqLocs.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l.location;
+    opt.textContent = l.location + ' — ' + l.owner;
+    opt.style.fontWeight = 'bold';
+    select.appendChild(opt);
+  });
+  if (hqLocs.length && regLocs.length) {
+    const sep = document.createElement('option');
+    sep.disabled = true;
+    sep.textContent = '────────────────────────';
+    select.appendChild(sep);
+  }
+  regLocs.forEach(l => {
+    const opt = document.createElement('option');
+    opt.value = l.location;
+    opt.textContent = l.location + ' — ' + l.owner;
+    select.appendChild(opt);
+  });
+}
+
+// ── ACCESS CHECK ──────────────────────────────────────────────────────────
 function gauCheckAccess() {
   const location = document.getElementById('gate-location').value;
   const input = document.getElementById('gate-input').value;
-  const config = gauGetConfig();
+  const config = gauClientConfig || { active: true, password: GAU_CLIENT_PASSWORD, hq_password: 'BlueNoseHQ2026' };
 
   document.getElementById('gate-err-location').style.display = 'none';
   document.getElementById('gate-err').style.display = 'none';
   document.getElementById('gate-suspended').style.display = 'none';
 
-  if (!location) {
-    document.getElementById('gate-err-location').style.display = 'block';
-    return;
-  }
+  if (!location) { document.getElementById('gate-err-location').style.display = 'block'; return; }
+  if (!config.active) { document.getElementById('gate-suspended').style.display = 'block'; return; }
 
-  if (!config.active) {
-    document.getElementById('gate-suspended').style.display = 'block';
-    return;
-  }
-
-  // HQ gets a different password
-  const hqPassword = gauGetHQPassword();
   const isHQ = location === 'Blue Nose HQ';
-  const correctPassword = isHQ ? hqPassword : config.password;
+  const correctPw = isHQ ? (config.hq_password || 'BlueNoseHQ2026') : config.password;
 
-  if (input === correctPassword) {
+  if (input === correctPw) {
     gauFranchiseLocation = location;
     sessionStorage.setItem('gau_access_' + GAU_CLIENT_ID, 'granted');
     sessionStorage.setItem('gau_location_' + GAU_CLIENT_ID, location);
@@ -555,81 +601,82 @@ function gauCheckAccess() {
   }
 }
 
+// ── SESSION MANAGEMENT ────────────────────────────────────────────────────
 function gauStartSession() {
   gauSessionStart = new Date();
-  gauSessionId = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+  gauSessionId = Date.now().toString(36) + Math.random().toString(36).substr(2,5);
   gauPagesVisited = 1;
   gauLogSession(false);
 }
 
-function gauLogSession(isFinal) {
+async function gauLogSession(isFinal) {
   if (!gauSessionStart) return;
   const now = new Date();
   const durationMins = Math.round((now - gauSessionStart) / 60000);
   const session = {
     id: gauSessionId,
-    clientId: GAU_CLIENT_ID,
-    franchiseLocation: gauFranchiseLocation,
-    loginTime: gauSessionStart.toISOString(),
-    lastUpdate: now.toISOString(),
-    durationMins: durationMins,
-    lastPage: gauCurrentPage,
-    pagesVisited: gauPagesVisited
+    client_id: GAU_CLIENT_ID,
+    franchise_location: gauFranchiseLocation,
+    login_time: gauSessionStart.toISOString(),
+    last_update: now.toISOString(),
+    duration_mins: durationMins,
+    last_page: gauCurrentPage,
+    pages_visited: gauPagesVisited
   };
   try {
-    const raw = localStorage.getItem('gau_admin_data');
-    if (raw) {
-      const data = JSON.parse(raw);
-      const idx = data.sessions.findIndex(s => s.id === gauSessionId);
-      if (idx > -1) data.sessions[idx] = session;
-      else data.sessions.push(session);
-      if (data.sessions.length > 1000) data.sessions = data.sessions.slice(-1000);
-      localStorage.setItem('gau_admin_data', JSON.stringify(data));
-    }
-  } catch(e) {}
+    await sbFetch('gau_sessions', {
+      method: 'POST',
+      prefer: 'resolution=merge-duplicates',
+      headers: { 'Prefer': 'resolution=merge-duplicates' },
+      body: JSON.stringify(session)
+    });
+  } catch(e) {
+    // Fallback to localStorage if Supabase fails
+    try {
+      const raw = localStorage.getItem('gau_admin_data');
+      if (raw) {
+        const data = JSON.parse(raw);
+        const idx = data.sessions.findIndex(s => s.id === gauSessionId);
+        if (idx > -1) data.sessions[idx] = {...session, loginTime: session.login_time, clientId: session.client_id, franchiseLocation: session.franchise_location, durationMins: session.duration_mins, lastPage: session.last_page, pagesVisited: session.pages_visited};
+        else data.sessions.push(session);
+        localStorage.setItem('gau_admin_data', JSON.stringify(data));
+      }
+    } catch(e2) {}
+  }
 }
 
 setInterval(() => { if (gauSessionStart) gauLogSession(false); }, 120000);
 window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSession(true); });
 
-(function gauInit() {
-  const config = gauGetConfig();
+// ── INIT ──────────────────────────────────────────────────────────────────
+(async function gauInit() {
+  // Load logo
   try {
     const mainLogo = document.querySelector('img[alt="Blue Nose Aerial Imaging"]');
     if (mainLogo) {
-      const gateLogoWrap = document.getElementById('gate-logo-wrap');
       const clone = mainLogo.cloneNode(true);
       clone.style.cssText = 'height:38px;width:auto;display:block;margin:0 auto';
-      gateLogoWrap.appendChild(clone);
+      document.getElementById('gate-logo-wrap').appendChild(clone);
     }
   } catch(e) {}
 
-  // Load any custom locations added by GAU admin panel
-  try {
-    const raw = localStorage.getItem('gau_extra_locations');
-    if (raw) {
-      const extras = JSON.parse(raw);
-      const select = document.getElementById('gate-location');
-      if (select && extras.length) {
-        // Add a separator
-        const sep = document.createElement('option');
-        sep.disabled = true;
-        sep.textContent = '── New Locations ──';
-        select.appendChild(sep);
-        extras.forEach(loc => {
-          const opt = document.createElement('option');
-          opt.value = loc.location;
-          opt.textContent = loc.location + (loc.owner && loc.owner !== 'TBC' ? ' — ' + loc.owner : '');
-          select.appendChild(opt);
-        });
-      }
-    }
-  } catch(e) {}
+  // Load config and locations from Supabase
+  const [config, locations] = await Promise.all([gauLoadConfig(), gauLoadLocations()]);
 
+  // Only repopulate dropdown if Supabase returned locations
+  // If it fails, the hardcoded HTML options remain intact and work fine
+  if (locations && locations.length > 0) {
+    gauPopulateDropdown(locations);
+  }
+  // If locations failed to load, hardcoded dropdown options remain - no action needed
+
+  // Check if suspended
   if (!config.active) {
     document.getElementById('gate-suspended').style.display = 'block';
     return;
   }
+
+  // Check if already logged in this session
   const granted = sessionStorage.getItem('gau_access_' + GAU_CLIENT_ID);
   const savedLoc = sessionStorage.getItem('gau_location_' + GAU_CLIENT_ID);
   if (granted === 'granted' && savedLoc) {
