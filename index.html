@@ -895,7 +895,8 @@ window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSessi
       <div class="sec-tag">Platform Overview</div>
       <h2 class="sec-title">Which platform for which work</h2>
       <div style="margin-top:40px">
-        <!-- CATEGORY 1: REPORT AND DOCUMENT AI -->
+        <div id="platforms-container">
+      <!-- CATEGORY 1: REPORT AND DOCUMENT AI -->
         <div style="margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06)">
           <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Report and Document AI</div>
           <div class="plat-grid">
@@ -1571,7 +1572,7 @@ After reading this document, you are fully briefed on Blue Nose Aerial Imaging a
 <div class="p-icon">&#127959;</div>
 <div class="p-title">Blue Nose Commercial Building Inspection Report</div>
 <div class="p-sub">Transforms raw field notes into a complete, professional deliverable</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Primary Service</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Primary Service</span></div>
 <div class="p-desc">The most important prompt in this library. Converts your on-site observations, notes, and findings into a structured, client-ready commercial building inspection report. Covers defect classification, risk assessment, and recommended actions. Output is formatted for property managers, insurers, facility managers, and structural engineers.</div>
 <div class="prompt-txt" id="p1">
 <div class="prompt-fade"></div>
@@ -1641,7 +1642,7 @@ Use clear headers for each section. Use a consistent table format for the risk m
 <div class="p-icon">&#127968;</div>
 <div class="p-title">Blue Nose Roof Damage and Insurance Assessment Report</div>
 <div class="p-sub">Purpose-built for storm damage documentation and insurance claims</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Insurance Work</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Insurance Work</span></div>
 <div class="p-desc">Creates an insurance-grade roof damage assessment from your aerial observations. Structured so insurance adjusters, roofing contractors, and property owners can all act from the same document. Proven effective in post-hurricane and severe weather claim scenarios.</div>
 <div class="prompt-txt" id="p2">
 <div class="prompt-fade"></div>
@@ -1719,7 +1720,7 @@ Standard certification statement. Pilot credentials, inspection date, methodolog
 <div class="p-icon">&#128196;</div>
 <div class="p-title">Blue Nose Enterprise Construction Proposal</div>
 <div class="p-sub">Full winning proposal from discovery notes to final document</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">High Value</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">High Value</span></div>
 <div class="p-desc">Generates a complete, competitive proposal for construction site services. Covers scope, methodology, the B.L.U.E. Framework, deliverables, investment, and next steps. Written to close, not to inform. Every section earns its place.</div>
 <div class="prompt-txt" id="p3">
 <div class="prompt-fade"></div>
@@ -1792,7 +1793,7 @@ TONE THROUGHOUT: Confident. Professional. Specific. Warm but never soft. Written
 <div class="p-icon">&#128222;</div>
 <div class="p-title">Blue Nose Proposal Follow-Up and Objection Handler</div>
 <div class="p-sub">For when a quote goes quiet or price pushback comes in</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Sales</span></div>
+<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Sales</span></div>
 <div class="p-desc">Writes a professional, non-desperate follow-up after a proposal has not received a response. Also handles the three most common objections: price, existing vendor, and timing. Each version is specific, direct, and closes toward a single next action.</div>
 <div class="prompt-txt" id="p4">
 <div class="prompt-fade"></div>
@@ -1854,7 +1855,7 @@ FOR ALL VERSIONS: No manufactured urgency. No "limited availability." No "I'd lo
 <div class="p-icon">&#128241;</div>
 <div class="p-title">Blue Nose LinkedIn Project Showcase Post</div>
 <div class="p-sub">Convert completed work into permanent social proof</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Content</span></div>
+<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Content</span></div>
 <div class="p-desc">Turns any completed Blue Nose project into a LinkedIn post that builds local authority, demonstrates real capability, and attracts new clients in your territory. Written to sound like a professional who loves the work, not a company account pushing content.</div>
 <div class="prompt-txt" id="p5">
 <div class="prompt-fade"></div>
@@ -1948,7 +1949,7 @@ A brief explanation of the three most significant editorial decisions made in th
 <div class="p-icon">&#128140;</div>
 <div class="p-title">Blue Nose Client Onboarding Sequence</div>
 <div class="p-sub">Set the tone from the moment they book</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Client Comms</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Client Comms</span></div>
 <div class="p-desc">Writes the full onboarding email sequence from booking confirmation through pre-flight reminders. Three emails that build confidence, set clear expectations, and establish Blue Nose as an organized, expert partner before the drone ever leaves the ground.</div>
 <div class="prompt-txt" id="p7">
 <div class="prompt-fade"></div>
@@ -2015,7 +2016,7 @@ TONE ACROSS ALL THREE: Professional, warm, organized. The communication of a hig
 <div class="p-icon">&#11088;</div>
 <div class="p-title">Blue Nose Review and Testimonial Capture System</div>
 <div class="p-sub">Turn happy clients into permanent social proof</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Client Comms</span></div>
+<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Client Comms</span></div>
 <div class="p-desc">A complete system for requesting reviews and testimonials from satisfied clients. Includes email version, SMS version, in-person ask script, and three coaching prompts that help clients write reviews specific enough to be useful in proposals and sales conversations.</div>
 <div class="prompt-txt" id="p8">
 <div class="prompt-fade"></div>
@@ -2072,7 +2073,7 @@ TONE: Warm, genuine, professional. This is a real ask from a real person, not an
 <div class="p-icon">&#128230;</div>
 <div class="p-title">Blue Nose Deliverable Handoff and Upsell Email</div>
 <div class="p-sub">Send work professionally and open the next conversation</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Client Comms</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Client Comms</span></div>
 <div class="p-desc">The email that accompanies delivery of completed work. Positions what was delivered, highlights the most important finding, opens the door for follow-on work, and sets up the next engagement without being pushy. Every deliverable is a sales moment. This prompt ensures you never miss it.</div>
 <div class="prompt-txt" id="p9">
 <div class="prompt-fade"></div>
@@ -2122,7 +2123,7 @@ TONE ACROSS BOTH: Efficient, professional, service-focused. This email should fe
 <div class="p-icon">&#127919;</div>
 <div class="p-title">Blue Nose Cold Outreach — Construction and Property</div>
 <div class="p-sub">Open enterprise doors with outreach that earns a reply</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Sales</span></div>
+<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Sales</span></div>
 <div class="p-desc">Writes targeted cold outreach to construction companies, general contractors, developers, and property managers in your territory. Produces email and LinkedIn versions, each calibrated for the specific prospect and their industry context. No generic templates. Every touch is specific enough to read as original.</div>
 <div class="prompt-txt" id="p10">
 <div class="prompt-fade"></div>
@@ -2230,7 +2231,7 @@ FORMAT: Use clear section headers. Keep it scannable. Bullet points acceptable i
 <div class="p-icon">&#9992;&#65039;</div>
 <div class="p-title">Blue Nose Mission Brief and Pre-Flight Document</div>
 <div class="p-sub">Complete pre-flight documentation in under 5 minutes</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Operations</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Operations</span></div>
 <div class="p-desc">Generates a complete mission brief for any Blue Nose flight operation. Covers all pre-flight requirements including airspace, hazards, emergency procedures, and client communication plan. Formatted for FAA compliance, client sharing, and internal records. Built for professional pilots who need a clean document fast.</div>
 <div class="prompt-txt" id="p12">
 <div class="prompt-fade"></div>
@@ -2315,7 +2316,7 @@ What was captured. Where raw files are stored. Processing timeline. Delivery met
 <div class="p-icon">&#128203;</div>
 <div class="p-title">Blue Nose SOP and Workflow Documentation Builder</div>
 <div class="p-sub">Document any process once. Run it flawlessly every time.</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Operations</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Operations</span></div>
 <div class="p-desc">Creates a complete, formatted Standard Operating Procedure for any repeatable Blue Nose workflow. From pre-flight checklists to client deliverable packaging. Written with enough precision that someone new to the franchise could follow it correctly on day one.</div>
 <div class="prompt-txt" id="p13">
 <div class="prompt-fade"></div>
@@ -2381,7 +2382,7 @@ Approval signature line (franchisee owner). Version history table for future upd
 <div class="p-icon">&#9728;&#65039;</div>
 <div class="p-title">Blue Nose Solar PV Inspection Report</div>
 <div class="p-sub">Thermal findings into an O&M-grade inspection deliverable</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Solar</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Solar</span></div>
 <div class="p-desc">Converts thermal imaging data and solar panel field observations into a professional inspection report formatted for O&M teams, asset managers, EPC contractors, and system owners. Includes fault classification, severity matrix, and priority maintenance schedule.</div>
 <div class="prompt-txt" id="p14">
 <div class="prompt-fade"></div>
@@ -2465,7 +2466,7 @@ Standard certification block. Pilot credentials. Inspection date. Methodology no
 <div class="p-icon">&#127806;</div>
 <div class="p-title">Blue Nose Precision Agriculture Field Survey Report</div>
 <div class="p-sub">Multispectral data into decisions the farmer can act on today</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Agriculture</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Agriculture</span></div>
 <div class="p-desc">Converts aerial crop survey observations, NDVI analysis, and multispectral field data into a structured agricultural field report with specific recommendations. Written for farmers and agronomists who need to act fast, not read long reports.</div>
 <div class="prompt-txt" id="p15">
 <div class="prompt-fade"></div>
@@ -2536,7 +2537,7 @@ Recommended timing and purpose for the next Blue Nose field survey based on crop
 <div class="p-icon">&#127959;</div>
 <div class="p-title">Blue Nose Construction Progress Report</div>
 <div class="p-sub">Monthly or milestone aerial documentation for general contractors and developers</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Construction</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Construction</span></div>
 <div class="p-desc">Generates a structured construction progress report from site observations and aerial imagery notes. Built for general contractors, developers, project owners, and owner's representatives who need accurate, timely documentation of site activity.</div>
 <div class="prompt-txt" id="p16">
 <div class="prompt-fade"></div>
@@ -2651,7 +2652,7 @@ TONE: Specific, credible, human. Not a press release. Not an ad. A genuine accou
 <div class="p-icon">&#128205;</div>
 <div class="p-title">Blue Nose Territory Intelligence and 90-Day Pipeline Plan</div>
 <div class="p-sub">Know your market before you work it</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Strategy</span></div>
+<div class="p-tags"><span class="p-tag research">Perplexity / Gemini</span><span class="p-tag green">Strategy</span></div>
 <div class="p-desc">Builds a complete local market intelligence brief and 90-day outreach plan for a Blue Nose franchise territory. Identifies priority prospect categories, seasonal patterns, where to find prospects, and quick win opportunities. Use this at the start of each quarter.</div>
 <div class="prompt-txt" id="p18">
 <div class="prompt-fade"></div>
@@ -2713,7 +2714,7 @@ Based on the territory description, identify the single biggest opportunity wher
 <div class="p-icon">&#9888;&#65039;</div>
 <div class="p-title">Blue Nose Issue Resolution and Client Recovery</div>
 <div class="p-sub">Handle problems before they become reputation events</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Operations</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Operations</span></div>
 <div class="p-desc">Drafts professional, direct, and confidence-maintaining responses to service incidents, client complaints, delivery delays, weather cancellations, and equipment issues. Handles accountability correctly without over-apologizing or undermining trust.</div>
 <div class="prompt-txt" id="p19">
 <div class="prompt-fade"></div>
@@ -2764,7 +2765,7 @@ TONE PRINCIPLE: Blue Nose is a veteran-owned company run by professional pilots.
 <div class="p-icon">&#128140;</div>
 <div class="p-title">Blue Nose Local Territory Email Campaign</div>
 <div class="p-sub">A 3-email sequence that builds trust and generates inquiries</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Content</span></div>
+<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Content</span></div>
 <div class="p-desc">Creates a complete 3-email nurture campaign for a specific vertical in your territory. Builds trust over time and creates the conditions for an inbound inquiry without cold-pitch energy. Each email advances the relationship toward a conversation.</div>
 <div class="prompt-txt" id="p20">
 <div class="prompt-fade"></div>
@@ -2829,7 +2830,7 @@ Write as a professional peer, not a vendor.
 <div class="p-icon">&#128269;</div>
 <div class="p-title">Blue Nose Multi-Building Portfolio Inspection Report</div>
 <div class="p-sub">For property managers and investors with multiple assets</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Portfolio Work</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Portfolio Work</span></div>
 <div class="p-desc">Generates a comprehensive inspection report covering multiple buildings in a single engagement. Built for property management companies, HOAs, commercial real estate investors, and institutional owners. Produces an executive summary, per-building findings, a cross-portfolio risk matrix, and a prioritized capital expenditure recommendation table.</div>
 <div class="prompt-txt" id="p21">
 <div class="prompt-fade"></div>
@@ -2893,7 +2894,7 @@ TONE: Institutional grade. Written for a board or investment committee. Every wo
 <div class="p-icon">&#128269;</div>
 <div class="p-title">Blue Nose Pre-Sale Commercial Property Inspection</div>
 <div class="p-sub">Aerial due diligence for buyers, sellers, lenders, and title companies</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Real Estate</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Real Estate</span></div>
 <div class="p-desc">Purpose-built for commercial real estate transactions. Generates a pre-sale aerial inspection report protecting buyers from undisclosed defects, giving sellers documented condition evidence, and supporting title companies, attorneys, lenders, and insurance underwriters involved in the transaction. Can be the deciding factor in a deal.</div>
 <div class="prompt-txt" id="p22">
 <div class="prompt-fade"></div>
@@ -2953,7 +2954,7 @@ Standard Blue Nose certification formatted for attachment to transaction documen
 <div class="p-icon">&#128269;</div>
 <div class="p-title">Blue Nose Post-Storm Emergency Damage Assessment</div>
 <div class="p-sub">Rapid aerial damage documentation for insurance claims and emergency response</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Emergency Response</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Emergency Response</span></div>
 <div class="p-desc">Designed for rapid deployment after hurricanes, hail storms, tornadoes, high winds, and flooding. Generates an emergency damage assessment enabling property owners to immediately file insurance claims, brief contractors, and document pre-repair condition. Time-sensitive and field-ready.</div>
 <div class="prompt-txt" id="p23">
 <div class="prompt-fade"></div>
@@ -3018,7 +3019,7 @@ Pilot credentials, inspection date and time, methodology, and limitation stateme
 <div class="p-icon">&#128269;</div>
 <div class="p-title">Blue Nose Insurance Adjuster Documentation Package</div>
 <div class="p-sub">Aerial evidence package optimized for insurance claim processing</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Insurance</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Insurance</span></div>
 <div class="p-desc">Produces a complete insurance adjuster documentation package formatted specifically to meet insurance carrier requirements, support claim quantification, and accelerate claim processing. Used by property owners, public adjusters, restoration contractors, and attorneys in complex or disputed claims.</div>
 <div class="prompt-txt" id="p24">
 <div class="prompt-fade"></div>
@@ -3080,7 +3081,7 @@ Professional note to the adjuster recommending a walkthrough of the imagery pack
 <div class="p-icon">&#128269;</div>
 <div class="p-title">Blue Nose Thermal Moisture Intrusion Investigation Report</div>
 <div class="p-sub">Thermal imaging evidence for water damage and building envelope failures</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Thermal Imaging</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Thermal Imaging</span></div>
 <div class="p-desc">Specialized report for thermal drone inspections focused on moisture intrusion, water damage investigation, and building envelope failures. Generates a thermal investigation report with temperature differential analysis, moisture probability mapping, and remediation recommendations. Used by property owners, remediation contractors, engineers, and insurance carriers.</div>
 <div class="prompt-txt" id="p25">
 <div class="prompt-fade"></div>
@@ -3148,7 +3149,7 @@ Blue Nose thermal inspection certification. Pilot credentials, inspection date a
 <div class="p-icon">&#128269;</div>
 <div class="p-title">Blue Nose Structural Defect Escalation Notice</div>
 <div class="p-sub">Formal urgent notification for critical structural findings</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Critical Priority</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Critical Priority</span></div>
 <div class="p-desc">Generates a formal written escalation notice for critical structural defects identified during aerial inspection. Used when findings represent immediate life safety risk or conditions requiring emergency contractor response. Creates a documented paper trail and drives urgent action from property owners who might otherwise delay.</div>
 <div class="prompt-txt" id="p26">
 <div class="prompt-fade"></div>
@@ -3206,7 +3207,7 @@ TONE: Urgent but calm. Professional and factual. Goal is to move the property ow
 <div class="p-icon">&#128269;</div>
 <div class="p-title">Blue Nose Preventive Maintenance Inspection Program Report</div>
 <div class="p-sub">Recurring aerial inspection program tracking condition over time</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Recurring Revenue</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Recurring Revenue</span></div>
 <div class="p-desc">Generates a structured preventive maintenance inspection report for property owners enrolled in a recurring aerial inspection program. Tracks condition changes over time, benchmarks against previous inspections, and produces a maintenance action plan for the coming period. Designed to lock in long-term recurring revenue contracts.</div>
 <div class="prompt-txt" id="p27">
 <div class="prompt-fade"></div>
@@ -3266,7 +3267,7 @@ Standard Blue Nose certification.</div>
 <div class="p-icon">&#128196;</div>
 <div class="p-title">Blue Nose Utility Infrastructure Inspection Report</div>
 <div class="p-sub">Power lines, transmission towers, substations, and corridor monitoring</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Utility</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Utility</span></div>
 <div class="p-desc">Complete utility infrastructure inspection report from aerial and thermal observations of power lines, transmission towers, distribution poles, substations, and right-of-way corridors. Formatted for utilities, transmission companies, co-ops, and municipalities. Includes defect classification, GPS-referenced findings, and maintenance priority schedule.</div>
 <div class="prompt-txt" id="p28">
 <div class="prompt-fade"></div>
@@ -3327,7 +3328,7 @@ Blue Nose certification with FAA authorization references, pilot credentials, an
 <div class="p-icon">&#128196;</div>
 <div class="p-title">Blue Nose Golf Course Turf Health Analysis Report</div>
 <div class="p-sub">TerraView-powered aerial turf assessment for course management decisions</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Golf / TerraView</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Golf / TerraView</span></div>
 <div class="p-desc">Complete golf course turf health analysis report using aerial imagery processed through Blue Nose's TerraView Solutions partnership. Covers stress zone identification, moisture variation, disease pressure, maintenance prioritization, and historical comparison. Written for golf course superintendents and course owners who need to act on the data immediately.</div>
 <div class="prompt-txt" id="p29">
 <div class="prompt-fade"></div>
@@ -3389,7 +3390,7 @@ TerraView platform access instructions and Blue Nose certification.</div>
 <div class="p-icon">&#128196;</div>
 <div class="p-title">Blue Nose Mapping and Photogrammetry Deliverable Report</div>
 <div class="p-sub">Orthomosaic, 3D model, and survey deliverable documentation</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Mapping</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Mapping</span></div>
 <div class="p-desc">Complete deliverable documentation report for aerial mapping and photogrammetry projects. Covers orthomosaic quality, ground control points, accuracy assessment, 3D model specifications, and deliverable handoff. Used for construction, civil engineering, land survey, municipal, and environmental mapping clients.</div>
 <div class="prompt-txt" id="p30">
 <div class="prompt-fade"></div>
@@ -3576,7 +3577,7 @@ Three social media posts the client can publish when the content goes live: Inst
 <div class="p-icon">&#128172;</div>
 <div class="p-title">Blue Nose Drone Rental Client Brief and Safety Package</div>
 <div class="p-sub">Professional pre-rental briefing for Blue Nose equipment clients</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Rentals</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Rentals</span></div>
 <div class="p-desc">Complete pre-rental client briefing document for Blue Nose drone rental clients. Covers equipment operation, FAA compliance, airspace awareness, mission planning, emergency procedures, and equipment return protocol. Ensures clients are fully briefed and Blue Nose is protected from liability from improperly operated equipment.</div>
 <div class="prompt-txt" id="p33">
 <div class="prompt-fade"></div>
@@ -3635,7 +3636,7 @@ Statement confirming client has received this brief, holds a valid FAA Part 107 
 <div class="p-icon">&#128203;</div>
 <div class="p-title">Blue Nose Professional Job Quote Generator</div>
 <div class="p-sub">Accurate, competitive, professionally formatted quotes for any service</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Quoting</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Quoting</span></div>
 <div class="p-desc">Generates a complete professional quote for any Blue Nose service. Takes job parameters and produces an itemized, justified quote with scope notes, payment terms, and a value statement. Helps franchisees price confidently, avoid undercharging, and present fees in a format that clients respect.</div>
 <div class="prompt-txt" id="p34">
 <div class="prompt-fade"></div>
@@ -3699,7 +3700,7 @@ State the date the quote expires and that pricing may change after that date.</d
 <div class="p-icon">&#128203;</div>
 <div class="p-title">Blue Nose Multi-Service Annual Contract Proposal</div>
 <div class="p-sub">Annual service agreement for clients needing multiple Blue Nose services</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">High Value</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">High Value</span></div>
 <div class="p-desc">Generates a complete annual multi-service contract proposal combining services into a bundled program. Positions the relationship as a strategic partnership rather than individual transactions. Designed to convert a one-time client into a committed annual partner and lock in recurring revenue.</div>
 <div class="prompt-txt" id="p35">
 <div class="prompt-fade"></div>
@@ -3755,7 +3756,7 @@ How to accept the program, deposit required, and when services begin.</div>
 <div class="p-icon">&#9992;</div>
 <div class="p-title">Blue Nose Site Hazard Assessment and Flight Risk Document</div>
 <div class="p-sub">Pre-mission safety analysis for complex or high-risk flight environments</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Safety</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Safety</span></div>
 <div class="p-desc">Comprehensive site hazard assessment and flight risk document for complex, urban, industrial, or high-risk flight environments. Required before any non-standard mission. Documents hazards, risk mitigations, emergency procedures, and pilot risk acceptance. Protects Blue Nose operationally and legally.</div>
 <div class="prompt-txt" id="p36">
 <div class="prompt-fade"></div>
@@ -3816,7 +3817,7 @@ Statement that the pilot has reviewed this assessment, confirms mitigations are 
 <div class="p-icon">&#9992;</div>
 <div class="p-title">Blue Nose Incident and Near-Miss Report</div>
 <div class="p-sub">Formal documentation for any operational incident or safety event</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Safety</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Safety</span></div>
 <div class="p-desc">Complete incident or near-miss report for any operational safety event including fly-aways, near-collisions, equipment failures, property damage, personal injury, or regulatory encounters. Creates a defensible documented record and captures lessons learned. Every incident must be documented. This prompt makes it fast and professional.</div>
 <div class="prompt-txt" id="p37">
 <div class="prompt-fade"></div>
@@ -3947,7 +3948,7 @@ Realistic but ambitious 90-day revenue target. Break it down: how many jobs, at 
 <div class="p-icon">&#128172;</div>
 <div class="p-title">Blue Nose Weather Delay and Rescheduling Communication</div>
 <div class="p-sub">Handle flight delays professionally and maintain client confidence</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Client Comms</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Client Comms</span></div>
 <div class="p-desc">Generates professional weather delay and rescheduling communications for any Blue Nose client. Covers same-day cancellation, advance weather warning, mid-engagement delay, and scope reduction due to conditions. Handles the situation that every franchisee faces and most handle poorly.</div>
 <div class="prompt-txt" id="p39">
 <div class="prompt-fade"></div>
@@ -3992,7 +3993,7 @@ TONE: Calm, professional, decisive. A Blue Nose pilot explains operational decis
 <div class="p-icon">&#128172;</div>
 <div class="p-title">Blue Nose Scope Change and Additional Services Proposal</div>
 <div class="p-sub">Handle mid-project changes professionally and generate additional revenue</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Upsell</span></div>
+<div class="p-tags"><span class="p-tag claude">Claude</span><span class="p-tag green">Upsell</span></div>
 <div class="p-desc">Generates professional scope change documentation and additional services proposals for situations where the client needs more than was originally quoted. Turns what could be a difficult conversation into a natural extension of the project. Every scope change is a revenue opportunity when handled correctly.</div>
 <div class="prompt-txt" id="p40">
 <div class="prompt-fade"></div>
@@ -4029,7 +4030,7 @@ Open by referencing the project and what prompted the change. Describe the addit
 <div class="p-icon">&#128200;</div>
 <div class="p-title">Blue Nose Repeat Client Reactivation Campaign</div>
 <div class="p-sub">Win back past clients who have gone quiet</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Reactivation</span></div>
+<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Reactivation</span></div>
 <div class="p-desc">Generates a complete 3-touch reactivation campaign for past Blue Nose clients who have not ordered in 60 days or more. Produces email and LinkedIn versions for each touch, calibrated to the time since last engagement and the service previously used. Past clients are the easiest revenue to recover.</div>
 <div class="prompt-txt" id="p41">
 <div class="prompt-fade"></div>
@@ -4073,7 +4074,7 @@ TONE: Written by a professional who values the relationship and does not need th
 <div class="p-icon">&#128200;</div>
 <div class="p-title">Blue Nose Referral Partner Outreach System</div>
 <div class="p-sub">Build a network of referral partners who send Blue Nose clients consistently</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Partnerships</span></div>
+<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Partnerships</span></div>
 <div class="p-desc">Generates a complete referral partner outreach system covering the five most valuable referral partner categories. Produces tailored outreach messages for insurance adjusters, restoration contractors, real estate brokers, construction project managers, and property managers. Referral partners are the highest-quality, lowest-cost source of new clients.</div>
 <div class="prompt-txt" id="p42">
 <div class="prompt-fade"></div>
@@ -4126,7 +4127,7 @@ A simple professional framework: what constitutes a referral, acknowledgment arr
 <div class="p-icon">&#9998;</div>
 <div class="p-title">Blue Nose Industry Blog Post Generator</div>
 <div class="p-sub">Research-grounded, authoritative blog content for Blue Nose website and social</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">SEO Content</span></div>
+<div class="p-tags"><span class="p-tag research">Perplexity / Gemini</span><span class="p-tag green">SEO Content</span></div>
 <div class="p-desc">Generates a fully researched, authoritative blog post for the Blue Nose website or franchisee marketing. Instructs the AI to research current industry data, FAA regulations, construction and drone industry publications, and verified sources before writing. Produces content that ranks in search, builds authority, and generates inbound leads.</div>
 <div class="prompt-txt" id="p43">
 <div class="prompt-fade"></div>
@@ -4300,7 +4301,7 @@ After the newsletter content, produce a complete design brief for the newsletter
 <div class="p-icon">&#9998;</div>
 <div class="p-title">Blue Nose Google Business Profile Optimization Package</div>
 <div class="p-sub">Fully optimize a Blue Nose franchisee Google Business Profile for local search</div>
-<div class="p-tags"><span class="p-tag both">Claude + ChatGPT</span><span class="p-tag green">Local SEO</span></div>
+<div class="p-tags"><span class="p-tag research">Perplexity / Gemini</span><span class="p-tag green">Local SEO</span></div>
 <div class="p-desc">Generates all text content needed to fully optimize a Blue Nose franchisee Google Business Profile. Covers business description, service descriptions, FAQ responses, post content, and review response templates. A fully optimized GBP is often a franchisee's single highest-return marketing activity.</div>
 <div class="prompt-txt" id="p46">
 <div class="prompt-fade"></div>
@@ -4410,7 +4411,7 @@ Color grade direction, text overlay style, lower thirds format, transition recom
 <div class="p-icon">&#127912;</div>
 <div class="p-title">Blue Nose Inspection Report Cover Page Design</div>
 <div class="p-sub">Professional cover page design brief and AI image prompt for all report types</div>
-<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Design</span></div>
+<div class="p-tags"><span class="p-tag image">Image Generation AI</span><span class="p-tag green">Design</span></div>
 <div class="p-desc">Generates a detailed Canva design brief AND a ready-to-paste AI image generation prompt for creating a professional inspection report cover page. Works with DALL-E, Midjourney, Adobe Firefly, and ChatGPT. Ensures every Blue Nose report is immediately recognizable as a professional corporate document.</div>
 <div class="prompt-txt" id="p48">
 <div class="prompt-fade"></div>
@@ -4464,7 +4465,7 @@ DESIGN PRINCIPLE: When a client opens this report, the cover must set the expect
 <div class="p-icon">&#127912;</div>
 <div class="p-title">Blue Nose Social Media Visual Design System</div>
 <div class="p-sub">Design brief and AI image prompt package for any social media post</div>
-<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Design</span></div>
+<div class="p-tags"><span class="p-tag image">Image Generation AI</span><span class="p-tag green">Design</span></div>
 <div class="p-desc">Generates a complete social media visual design brief synchronized with any piece of Blue Nose content. Produces Canva layout specifications AND a ready-to-paste AI image generation prompt for the hero image. Every social post gets a visual package that matches the message. Works for LinkedIn, Instagram, and Facebook.</div>
 <div class="prompt-txt" id="p49">
 <div class="prompt-fade"></div>
@@ -4528,7 +4529,7 @@ DESIGN PRINCIPLE: The visual must make someone stop scrolling in the first 0.5 s
 <div class="p-icon">&#127912;</div>
 <div class="p-title">Blue Nose Proposal and Quote Design Package</div>
 <div class="p-sub">Professionally designed proposal layout and cover for client presentations</div>
-<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Design</span></div>
+<div class="p-tags"><span class="p-tag design">Design Tools</span><span class="p-tag green">Design</span></div>
 <div class="p-desc">Generates a complete design brief for a Blue Nose proposal or quote document. Produces Canva layout specifications, typography hierarchy, color system, and page-by-page design guidance. Also includes AI image generation prompts for proposal imagery. Ensures every Blue Nose proposal looks as professional as its content.</div>
 <div class="prompt-txt" id="p50">
 <div class="prompt-fade"></div>
@@ -4589,7 +4590,7 @@ Step by step: How to create a new Canva document, set the page dimensions, uploa
 <div class="p-icon">&#127912;</div>
 <div class="p-title">Blue Nose Aerial Image Enhancement and Annotation Guide</div>
 <div class="p-sub">Improve, annotate, and professionally present aerial inspection imagery</div>
-<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Image Editing</span></div>
+<div class="p-tags"><span class="p-tag image">Image Generation AI</span><span class="p-tag green">Image Editing</span></div>
 <div class="p-desc">Generates detailed image editing and enhancement instructions for improving aerial inspection photographs. Produces enhancement briefs for Photoshop, Lightroom, or Canva AND annotation prompts for adding defect markers, measurement overlays, and professional callouts to inspection imagery using ChatGPT or Claude with image upload.</div>
 <div class="prompt-txt" id="p51">
 <div class="prompt-fade"></div>
@@ -4641,7 +4642,7 @@ A ready-to-use prompt to paste into ChatGPT (image upload enabled) or Claude whe
 <div class="p-icon">&#127912;</div>
 <div class="p-title">Blue Nose Brand Marketing Asset Creation System</div>
 <div class="p-sub">Generate branded marketing materials for any Blue Nose promotional need</div>
-<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Brand Assets</span></div>
+<div class="p-tags"><span class="p-tag design">Design Tools</span><span class="p-tag green">Brand Assets</span></div>
 <div class="p-desc">Generates comprehensive design briefs and AI image generation prompts for Blue Nose brand marketing assets including service flyers, local area marketing, email headers, and digital advertising. Each output includes a Canva design brief, a ready-to-paste AI image generation prompt, and all copy needed for the asset.</div>
 <div class="prompt-txt" id="p52">
 <div class="prompt-fade"></div>
@@ -4705,7 +4706,7 @@ For digital display ads: Multiple size brief covering 300x250, 728x90, and 160x6
 <div class="p-icon">&#127912;</div>
 <div class="p-title">Blue Nose Thermal and Aerial Image Color Enhancement Prompt</div>
 <div class="p-sub">Maximize visual impact of thermal and aerial imagery for reports and presentations</div>
-<div class="p-tags"><span class="p-tag gpt">ChatGPT</span><span class="p-tag green">Image Enhancement</span></div>
+<div class="p-tags"><span class="p-tag image">Image Generation AI</span><span class="p-tag green">Image Enhancement</span></div>
 <div class="p-desc">Specialized image enhancement prompts for thermal inspection imagery and aerial survey photographs. Generates detailed editing instructions to maximize defect visibility in thermal images, enhance orthomosaic quality, and produce presentation-ready aerial photography. Works with Lightroom, Photoshop, and AI image editing tools.</div>
 <div class="prompt-txt" id="p53">
 <div class="prompt-fade"></div>
@@ -5224,6 +5225,9 @@ async function bnLoadContent() {
   if (tools && tools.length > 0) {
     bnApplyTools(tools);
   }
+  // Load platform tools
+  await bnLoadPlatforms();
+
   if ((prompts && prompts.length) || (cobrain && cobrain.length) || (tools && tools.length)) {
     bnContentLoaded = true;
     console.log('Blue Nose platform: live content loaded from Supabase');
@@ -5341,6 +5345,71 @@ window.gauStartSession = function() {
   }
   setTimeout(bnLoadContent, 800);
 };
+
+// ── DYNAMIC PLATFORM TOOLS LOADER ───────────────────────────────────────────
+async function bnLoadPlatforms() {
+  try {
+    var data = await bnFetch('gau_platforms?client_id=eq.bluenose&active=eq.true&order=category_order.asc,tool_order.asc');
+    if (!data || !data.length) return; // Keep static fallback
+    bnRenderPlatforms(data);
+  } catch(e) {
+    // Keep static fallback on error
+  }
+}
+
+function bnRenderPlatforms(platforms) {
+  var container = document.getElementById('platforms-container');
+  if (!container) return;
+
+  var categories = [];
+  var catMap = {};
+  platforms.forEach(function(p) {
+    if (!catMap[p.category]) {
+      catMap[p.category] = {name:p.category, key:p.category_key, order:p.category_order, tools:[]};
+      categories.push(catMap[p.category]);
+    }
+    catMap[p.category].tools.push(p);
+  });
+  categories.sort(function(a,b){ return a.order - b.order; });
+
+  var divider = 'border-bottom:1px solid rgba(255,255,255,0.06)';
+  var catLabelStyle = 'font-family:DM Mono,monospace;font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px';
+  var html = '';
+
+  categories.forEach(function(cat, idx) {
+    var isLast = (idx === categories.length - 1);
+    var wrapStyle = isLast ? 'margin-bottom:40px' : 'margin-bottom:12px;padding-bottom:8px;' + divider;
+    html += '<div style="' + wrapStyle + '">';
+    html += '<div style="' + catLabelStyle + '">' + escHtmlPl(cat.name) + '</div>';
+    html += '<div class="plat-grid">';
+
+    cat.tools.forEach(function(tool) {
+      var bullets = [];
+      try {
+        bullets = typeof tool.bullet_points === 'string' ? JSON.parse(tool.bullet_points) : (tool.bullet_points || []);
+      } catch(e) { bullets = []; }
+
+      var cc = escHtmlPl(tool.color_class);
+      html += '<div class="plat-card ' + cc + '">';
+      html += '<div class="plat-name ' + cc + '">' + escHtmlPl(tool.tool_name) + '</div>';
+      html += '<div class="plat-tag">' + escHtmlPl(tool.tag_line) + '</div>';
+      html += '<div class="plat-items">';
+      bullets.forEach(function(b) {
+        html += '<div class="plat-item"><div class="plat-dot ' + cc + '"></div><span>' + escHtmlPl(b) + '</span></div>';
+      });
+      html += '</div></div>';
+    });
+    html += '</div></div>';
+  });
+
+  container.innerHTML = html;
+}
+
+function escHtmlPl(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
 </script>
 
 </body>
