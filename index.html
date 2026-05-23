@@ -381,6 +381,10 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:clamp(32px,5vw,56px) 
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .fade-up{animation:fadeUp 0.55s ease both}
 .d1{animation-delay:0.1s}.d2{animation-delay:0.2s}.d3{animation-delay:0.3s}.d4{animation-delay:0.4s}.d5{animation-delay:0.5s}.d6{animation-delay:0.55s}
+.back-to-top-wrap{display:flex;justify-content:center;padding:32px 0 8px}
+.back-to-top-btn{display:inline-flex;align-items:center;gap:8px;background:var(--emerald);color:var(--navy-2);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;padding:14px 36px;border-radius:8px;border:none;cursor:pointer;transition:all 0.2s;letter-spacing:0.01em}
+.back-to-top-btn:hover{background:var(--emerald-dk);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,201,141,0.3)}
+.back-to-top-btn svg{flex-shrink:0}
 </style>
 </head>
 <body>
@@ -1142,6 +1146,7 @@ window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSessi
       <div class="footer-brand">Blue Nose <em>AI</em> Command Center</div>
       <div class="footer-credit">Built for Blue Nose Aerial Imaging by <a href="https://globalairu.com" target="_blank"><span style="font-weight:700;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span></a></div>
     </div>
+  <div class="back-to-top-wrap"><button class="back-to-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L3 8M8 3l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Top</button></div>
   </footer></div>
 
 </div>
@@ -1538,6 +1543,7 @@ After reading this document, you are fully briefed on Blue Nose Aerial Imaging a
       <div class="footer-brand">Blue Nose <em>AI</em> Command Center</div>
       <div class="footer-credit">Built for Blue Nose Aerial Imaging by <a href="https://globalairu.com" target="_blank"><span style="font-weight:700;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span></a></div>
     </div>
+  <div class="back-to-top-wrap"><button class="back-to-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L3 8M8 3l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Top</button></div>
   </footer></div>
 </div>
 
@@ -4788,6 +4794,7 @@ A ready-to-paste prompt for ChatGPT (with DALL-E image editing) or Adobe Firefly
       <div class="footer-brand">Blue Nose <em>AI</em> Command Center</div>
       <div class="footer-credit">Built for Blue Nose Aerial Imaging by <a href="https://globalairu.com" target="_blank"><span style="font-weight:700;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span></a></div>
     </div>
+  <div class="back-to-top-wrap"><button class="back-to-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L3 8M8 3l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Top</button></div>
   </footer></div>
 </div>
 
@@ -5050,6 +5057,7 @@ Ready. Give me your first intelligence item or market signal to process.
       <div class="footer-brand">Blue Nose <em>AI</em> Command Center</div>
       <div class="footer-credit">Built for Blue Nose Aerial Imaging by <a href="https://globalairu.com" target="_blank"><span style="font-weight:700;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span></a></div>
     </div>
+  <div class="back-to-top-wrap"><button class="back-to-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 13V3M8 3L3 8M8 3l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Top</button></div>
   </footer></div>
 </div>
 
