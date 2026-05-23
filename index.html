@@ -766,9 +766,9 @@ window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSessi
           <p class="hero-sub fade-up d3">A complete AI operating system built exclusively for Blue Nose Aerial Imaging franchisees. From the field to the front office, from cold outreach to final report delivery. Powered by Global Air U <span style="font-weight:600;letter-spacing:0.5px;"><span style="color:#FFFFFF;">EQUALIZ</span><span style="color:#00C98D;">(R)</span></span>.</p>
           <div class="hero-stats fade-up d4">
             <div><div class="stat-num">50<span>+</span></div><div class="stat-lbl">Master Prompts</div></div>
-            <div><div class="stat-num">5</div><div class="stat-lbl">AI Power Tools</div></div>
+            <div><div class="stat-num">5<span>+</span></div><div class="stat-lbl">AI Power Tools</div></div>
             <div><div class="stat-num">1</div><div class="stat-lbl">Co-Brain System</div></div>
-            <div><div class="stat-num">2</div><div class="stat-lbl">Platforms Covered</div></div>
+            <div><div class="stat-num">13<span>+</span></div><div class="stat-lbl">Platforms Covered</div></div>
           </div>
           <div class="hero-btns fade-up d5">
             <button class="btn-p" onclick="showPage('cobrain')">Start with the Co-Brain <span class="arr">&#8594;</span></button>
@@ -5425,6 +5425,63 @@ function escHtmlPl(s) {
   if (!s) return '';
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
+
+// ── INACTIVITY TIMER ────────────────────────────────────────────────────────
+// Logs the user out after 5 minutes of no interaction (click, scroll, keypress, copy).
+// Tab-close already clears sessionStorage natively. This covers open-idle sessions.
+(function() {
+  var IDLE_MS = 5 * 60 * 1000; // 5 minutes
+
+  var _idleTimer = null;
+
+  function _isLoggedIn() {
+    try {
+      var GAU = typeof GAU_CLIENT_ID !== 'undefined' ? GAU_CLIENT_ID : 'bluenose';
+      return sessionStorage.getItem('gau_access_' + GAU) === 'granted';
+    } catch(e) { return false; }
+  }
+
+  function _doLogout() {
+    try {
+      var GAU = typeof GAU_CLIENT_ID !== 'undefined' ? GAU_CLIENT_ID : 'bluenose';
+      sessionStorage.removeItem('gau_access_' + GAU);
+      sessionStorage.removeItem('gau_location_' + GAU);
+    } catch(e) {}
+    var gate = document.getElementById('gau-gate');
+    if (gate) gate.style.display = 'flex';
+    var inp = document.getElementById('gate-input');
+    if (inp) inp.value = '';
+  }
+
+  function _resetTimer() {
+    if (!_isLoggedIn()) return;
+    if (_idleTimer) clearTimeout(_idleTimer);
+    _idleTimer = setTimeout(function() {
+      if (_isLoggedIn()) _doLogout();
+    }, IDLE_MS);
+  }
+
+  function _startWatching() {
+    ['click','scroll','keypress','mousemove','touchstart','copy'].forEach(function(evt) {
+      document.addEventListener(evt, _resetTimer, { passive: true });
+    });
+    _resetTimer();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _startWatching);
+  } else {
+    _startWatching();
+  }
+
+  // Also start the timer right after a fresh login
+  var _origGS = window.gauStartSession;
+  window.gauStartSession = function() {
+    if (typeof _origGS === 'function') _origGS.apply(this, arguments);
+    _resetTimer();
+  };
+})();
+
 
 </script>
 
