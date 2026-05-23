@@ -707,6 +707,17 @@ window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSessi
   const granted = sessionStorage.getItem('gau_access_' + GAU_CLIENT_ID);
   const savedLoc = sessionStorage.getItem('gau_location_' + GAU_CLIENT_ID);
   if (granted === 'granted' && savedLoc) {
+    // Re-validate active status from Supabase before skipping the gate.
+    // This ensures that toggling access off in the Admin Panel forces
+    // re-authentication even for users who were already logged in.
+    const freshConfig = await gauLoadConfig();
+    if (!freshConfig.active) {
+      // Access has been toggled off — clear session and show gate
+      sessionStorage.removeItem('gau_access_' + GAU_CLIENT_ID);
+      sessionStorage.removeItem('gau_location_' + GAU_CLIENT_ID);
+      document.getElementById('gate-suspended').style.display = 'block';
+      return;
+    }
     gauFranchiseLocation = savedLoc;
     document.getElementById('gau-gate').style.display = 'none';
     gauStartSession();
@@ -768,7 +779,7 @@ window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSessi
             <div><div class="stat-num">50<span>+</span></div><div class="stat-lbl">Master Prompts</div></div>
             <div><div class="stat-num">5<span>+</span></div><div class="stat-lbl">AI Power Tools</div></div>
             <div><div class="stat-num">1</div><div class="stat-lbl">Co-Brain System</div></div>
-            <div><div class="stat-num">13<span>+</span></div><div class="stat-lbl">Platforms Covered</div></div>
+            <div><div class="stat-num">16<span>+</span></div><div class="stat-lbl">Platforms Covered</div></div>
           </div>
           <div class="hero-btns fade-up d5">
             <button class="btn-p" onclick="showPage('cobrain')">Start with the Co-Brain <span class="arr">&#8594;</span></button>
@@ -5473,6 +5484,23 @@ function escHtmlPl(s) {
   } else {
     _startWatching();
   }
+
+  // Background poll: every 60 seconds, re-check active status from Supabase.
+  // If access has been toggled off in the Admin Panel, immediately log out
+  // any user who is currently logged in — no page reload required.
+  setInterval(async function() {
+    if (!_isLoggedIn()) return;
+    try {
+      var GAU = typeof GAU_CLIENT_ID !== 'undefined' ? GAU_CLIENT_ID : 'bluenose';
+      var freshCfg = await gauLoadConfig();
+      if (freshCfg && freshCfg.active === false) {
+        _doLogout();
+        // Show the suspended message so the user knows why
+        var susp = document.getElementById('gate-suspended');
+        if (susp) susp.style.display = 'block';
+      }
+    } catch(e) {}
+  }, 60000);
 
   // Also start the timer right after a fresh login
   var _origGS = window.gauStartSession;
