@@ -5235,11 +5235,12 @@ async function bnLoadContent() {
 }
 
 function getPlatTagLabel(tag) {
-  var labels = {
+  // Legacy key map kept for backward compatibility with any old Supabase records
+  var legacy = {
     'both': 'Claude + ChatGPT',
-    'claude': 'Claude Only',
-    'gpt': 'ChatGPT Only',
-    'research': 'Perplexity / Gemini',
+    'claude': 'Claude',
+    'gpt': 'ChatGPT',
+    'research': 'Perplexity + Claude',
     'image': 'Image Generation AI',
     'video': 'Video Generation AI',
     'design': 'Design Tools',
@@ -5250,7 +5251,21 @@ function getPlatTagLabel(tag) {
     'runway': 'Runway',
     'canva': 'Canva'
   };
-  return labels[tag] || tag;
+  // If tag contains spaces or plus signs it is already a full display string — return as-is
+  if (tag && (tag.indexOf('+') > -1 || tag.indexOf(' ') > -1)) return tag;
+  return legacy[tag] || tag;
+}
+
+function getPlatTagColorClass(tag, colorOverride) {
+  if (colorOverride) return colorOverride;
+  if (!tag) return 'claude';
+  var t = tag.toLowerCase();
+  if (t.indexOf('perplexity') > -1 || t.indexOf('gemini') > -1) return 'research';
+  if (t.indexOf('midjourney') > -1 || t.indexOf('firefly') > -1 || t.indexOf('dall-e') > -1) return 'image';
+  if (t.indexOf('runway') > -1) return 'video';
+  if (t.indexOf('canva') > -1 || t.indexOf('adobe express') > -1) return 'design';
+  if (t.indexOf('chatgpt') > -1 && t.indexOf('claude') === -1) return 'chatgpt';
+  return 'claude';
 }
 
 function bnApplyPrompts(prompts) {
@@ -5269,13 +5284,14 @@ function bnApplyPrompts(prompts) {
           textEl.textContent = p.prompt_text;
           if (fade) textEl.insertBefore(fade, textEl.firstChild);
         }
-        // Update platform tag label and class
+        // Update platform tag label and color class
         if (p.platform_tag) {
           var tagsEl = cards[i].querySelector('.p-tags');
           if (tagsEl) {
             var platSpan = tagsEl.querySelector('.p-tag:not(.green)');
             if (platSpan) {
-              platSpan.className = 'p-tag ' + p.platform_tag;
+              var colorClass = getPlatTagColorClass(p.platform_tag, p.platform_color || null);
+              platSpan.className = 'p-tag ' + colorClass;
               platSpan.textContent = getPlatTagLabel(p.platform_tag);
             }
           }
