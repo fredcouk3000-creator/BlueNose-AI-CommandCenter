@@ -2906,5 +2906,135 @@ document.addEventListener('click', (e) => {
   }
 });
 </script>
+
+<script>
+// ══ LIVE CONTENT LOADER (Supabase) ═══════════════════════════════════════
+// Reads prompts, Co-Brain, and tools from Supabase
+// Falls back to hardcoded HTML if Supabase is unavailable
+// Polls every 60 seconds so edits in Admin Panel appear immediately
+
+const BN_SUPABASE_URL = 'https://soridoreioklphpraehm.supabase.co';
+const BN_SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNvcmlkb3JlaW9rbHBocHJhZWhtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0NzY2NDEsImV4cCI6MjA5NTA1MjY0MX0.4F6r_1zbJAPZ3-VoWglDt4TNr1Nco_5--aAfZ-lyrlk';
+let bnContentLoaded = false;
+let bnLastLoad = 0;
+
+async function bnFetch(path) {
+  try {
+    const res = await fetch(BN_SUPABASE_URL + '/rest/v1/' + path, {
+      headers: {
+        'apikey': BN_SUPABASE_KEY,
+        'Authorization': 'Bearer ' + BN_SUPABASE_KEY
+      }
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch(e) { return null; }
+}
+
+async function bnLoadContent() {
+  const now = Date.now();
+  if (now - bnLastLoad < 55000 && bnContentLoaded) return;
+  bnLastLoad = now;
+
+  const [prompts, cobrain, tools] = await Promise.all([
+    bnFetch('gau_prompts?client_id=eq.bluenose&active=eq.true&order=sort_order.asc'),
+    bnFetch('gau_cobrain?client_id=eq.bluenose&order=sort_order.asc'),
+    bnFetch('gau_tools?client_id=eq.bluenose&active=eq.true&order=sort_order.asc')
+  ]);
+
+  if (prompts && prompts.length > 0) {
+    bnApplyPrompts(prompts);
+  }
+  if (cobrain && cobrain.length > 0) {
+    bnApplyCoBrain(cobrain);
+  }
+  if (tools && tools.length > 0) {
+    bnApplyTools(tools);
+  }
+  if ((prompts && prompts.length) || (cobrain && cobrain.length) || (tools && tools.length)) {
+    bnContentLoaded = true;
+    console.log('Blue Nose platform: live content loaded from Supabase');
+  }
+}
+
+function bnApplyPrompts(prompts) {
+  prompts.forEach(function(p) {
+    // Find prompt card by title match and update the prompt text
+    var cards = document.querySelectorAll('.p-card');
+    for (var i = 0; i < cards.length; i++) {
+      var titleEl = cards[i].querySelector('.p-title');
+      if (titleEl && titleEl.textContent.trim() === p.title.trim()) {
+        // Update description
+        var descEl = cards[i].querySelector('.p-desc');
+        if (descEl && p.description) descEl.textContent = p.description;
+        // Update prompt text
+        var textEl = cards[i].querySelector('.prompt-txt');
+        if (textEl && p.prompt_text) {
+          var fade = textEl.querySelector('.prompt-fade');
+          textEl.textContent = p.prompt_text;
+          if (fade) textEl.insertBefore(fade, textEl.firstChild);
+        }
+        break;
+      }
+    }
+  });
+}
+
+function bnApplyCoBrain(sections) {
+  sections.forEach(function(s) {
+    var el = document.getElementById('cb-s' + s.sort_order);
+    if (el && s.content) el.textContent = s.content;
+  });
+}
+
+function bnApplyTools(tools) {
+  tools.forEach(function(t) {
+    // Find tool activation prompt textarea by tool number
+    var actId = 'gat' + t.tool_number;
+    var actEl = document.getElementById(actId);
+    if (actEl && t.activation_prompt) {
+      var fade = actEl.querySelector('.gpt-act-fade');
+      actEl.textContent = t.activation_prompt;
+      if (fade) actEl.insertBefore(fade, actEl.firstChild);
+    }
+    // Update tool title and description
+    var cards = document.querySelectorAll('.gpt-card');
+    for (var i = 0; i < cards.length; i++) {
+      var numBadge = cards[i].querySelector('.gpt-num-badge');
+      if (numBadge && numBadge.textContent.trim() === 'Tool ' + String(t.tool_number).padStart(2,'0')) {
+        var titleEl = cards[i].querySelector('.gpt-title');
+        if (titleEl && t.title) titleEl.textContent = t.title;
+        var descEl = cards[i].querySelector('.gpt-desc');
+        if (descEl && t.description) descEl.textContent = t.description;
+        var linkEl = cards[i].querySelector('.gpt-link');
+        if (linkEl && t.tool_url) linkEl.href = t.tool_url;
+        break;
+      }
+    }
+  });
+}
+
+// Load content after franchisee logs in
+var bnOrigStartSession = typeof gauStartSession !== 'undefined' ? gauStartSession : null;
+document.addEventListener('DOMContentLoaded', function() {
+  // Try loading content on page load (for already-logged-in sessions)
+  setTimeout(bnLoadContent, 1500);
+  // Poll every 60 seconds for live updates
+  setInterval(bnLoadContent, 60000);
+});
+
+// Hook into gauStartSession to load content after login
+var bnOrigGauStart = window.gauStartSession;
+window.gauStartSession = function() {
+  if (typeof gauSessionStart !== 'undefined') {
+    gauSessionStart = new Date();
+    gauSessionId = Date.now().toString(36) + Math.random().toString(36).substr(2,5);
+    gauPagesVisited = 1;
+    gauLogSession(false);
+  }
+  setTimeout(bnLoadContent, 800);
+};
+</script>
+
 </body>
 </html>
