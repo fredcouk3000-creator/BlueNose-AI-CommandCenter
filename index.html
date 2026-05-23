@@ -203,6 +203,22 @@ nav{position:sticky;top:0;z-index:200;width:100%;background:rgba(6,14,26,0.94);b
 .plat-dot.claude{background:#C084FC}
 .plat-dot.chatgpt{background:#34D399}
 
+.plat-card.research{background:rgba(251,191,36,0.04);border-color:rgba(251,191,36,0.18)}
+.plat-name.research{color:#FBBF24}
+.plat-dot.research{background:#FBBF24}
+
+.plat-card.image{background:rgba(249,115,22,0.04);border-color:rgba(249,115,22,0.18)}
+.plat-name.image{color:#F97316}
+.plat-dot.image{background:#F97316}
+
+.plat-card.video{background:rgba(239,68,68,0.04);border-color:rgba(239,68,68,0.18)}
+.plat-name.video{color:#EF4444}
+.plat-dot.video{background:#EF4444}
+
+.plat-card.design{background:rgba(0,201,141,0.04);border-color:rgba(0,201,141,0.18)}
+.plat-name.design{color:#00C98D}
+.plat-dot.design{background:#00C98D}
+
 /* CALLOUT */
 .callout{background:rgba(0,201,141,0.06);border:1px solid rgba(0,201,141,0.2);border-left:4px solid var(--emerald);border-radius:0 10px 10px 0;padding:clamp(14px,2.5vw,24px);margin:clamp(16px,3vw,32px) 0}
 .callout-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--emerald);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
@@ -869,29 +885,229 @@ window.addEventListener('beforeunload', () => { if (gauSessionStart) gauLogSessi
       <div class="sec-tag">Platform Overview</div>
       <h2 class="sec-title">Which platform for which work</h2>
       <div style="margin-top:40px">
-        <div class="plat-grid">
-          <div class="plat-card claude">
-            <div class="plat-name claude">Claude</div>
-            <div class="plat-tag">Best for structured deliverables and reports</div>
-            <div class="plat-items">
-              <div class="plat-item"><div class="plat-dot claude"></div><span>Building inspection reports and damage assessments</span></div>
-              <div class="plat-item"><div class="plat-dot claude"></div><span>Construction proposals and quote documents</span></div>
-              <div class="plat-item"><div class="plat-dot claude"></div><span>Mission briefs and pre-flight documentation</span></div>
-              <div class="plat-item"><div class="plat-dot claude"></div><span>SOPs, client onboarding, and deliverable handoffs</span></div>
-              <div class="plat-item"><div class="plat-dot claude"></div><span>Solar, agricultural, and utility inspection reports</span></div>
-              <div class="plat-item"><div class="plat-dot claude"></div><span>Recommended model: Claude Sonnet</span></div>
+        <!-- CATEGORY 1: REPORT AND DOCUMENT AI -->
+        <div style="margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Report and Document AI</div>
+          <div class="plat-grid">
+            <div class="plat-card claude">
+              <div class="plat-name claude">Claude</div>
+              <div class="plat-tag">Best for structured deliverables, reports, and long-form documents</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Building inspection reports and damage assessments</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Construction proposals, quotes, and SOWs</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Mission briefs and pre-flight documentation</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>SOPs, client onboarding, and deliverable handoffs</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Solar, agricultural, and utility inspection reports</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Recommended model: Claude Sonnet</span></div>
+              </div>
+            </div>
+            <div class="plat-card chatgpt">
+              <div class="plat-name chatgpt">ChatGPT</div>
+              <div class="plat-tag">Best for outreach, content creation, and AI Power Tools</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>All five AI Power Tool operating systems</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Cold outreach emails and LinkedIn messages</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Social media content and post creation</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Territory market intelligence and pipeline building</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Case study creation and follow-up sequences</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Recommended model: GPT-4o</span></div>
+              </div>
             </div>
           </div>
-          <div class="plat-card chatgpt">
-            <div class="plat-name chatgpt">ChatGPT</div>
-            <div class="plat-tag">Best for outreach, content, and AI Power Tools</div>
-            <div class="plat-items">
-              <div class="plat-item"><div class="plat-dot chatgpt"></div><span>All five AI Power Tool operating systems</span></div>
-              <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Cold outreach emails and LinkedIn messages</span></div>
-              <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Social media content and post creation</span></div>
-              <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Territory market intelligence and pipeline building</span></div>
-              <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Case study creation and follow-up sequences</span></div>
-              <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Recommended model: GPT-4o only</span></div>
+        </div>
+
+        <!-- CATEGORY 2: RESEARCH AND INTELLIGENCE AI -->
+        <div style="margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Research and Intelligence AI</div>
+          <div class="plat-grid">
+            <div class="plat-card research">
+              <div class="plat-name research">Perplexity</div>
+              <div class="plat-tag">Best for real-time research with cited sources</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot research"></div><span>Industry news, FAA updates, and regulatory changes</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Competitor research and market intelligence</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Local market research for territory prospecting</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Blog post research with verifiable source citations</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Construction, solar, and agricultural industry data</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Free plan available at perplexity.ai</span></div>
+              </div>
+            </div>
+            <div class="plat-card research">
+              <div class="plat-name research">Gemini</div>
+              <div class="plat-tag">Best for Google ecosystem integration and multimodal tasks</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot research"></div><span>Research with Google Search integration</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Analysing documents, PDFs, and data files</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Drafting directly into Google Docs and Gmail</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Long document summarisation and extraction</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Cross-referencing industry reports and standards</span></div>
+                <div class="plat-item"><div class="plat-dot research"></div><span>Free plan available at gemini.google.com</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 3: IMAGE GENERATION AND ENHANCEMENT -->
+        <div style="margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Image Generation and Enhancement</div>
+          <div class="plat-grid">
+            <div class="plat-card claude">
+              <div class="plat-name claude">Claude</div>
+              <div class="plat-tag">Best for image analysis, annotation briefs, and design direction</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Generating detailed image generation prompts for other tools</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Analysing uploaded aerial images and describing findings</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Creating annotation specifications for inspection imagery</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Writing Canva and Adobe Express design briefs</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Describing edits needed to improve existing images</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Recommended model: Claude Sonnet</span></div>
+              </div>
+            </div>
+            <div class="plat-card chatgpt">
+              <div class="plat-name chatgpt">ChatGPT + DALL-E 3</div>
+              <div class="plat-tag">Best for generating and editing images directly inside ChatGPT</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Report cover page hero images from a text description</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Social media visuals for LinkedIn and Instagram posts</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Marketing asset imagery for flyers and brochures</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Edit and enhance uploaded photos with text instructions</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Generate multiple variations of an image quickly</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Requires ChatGPT Plus subscription</span></div>
+              </div>
+            </div>
+            <div class="plat-card image">
+              <div class="plat-name image">Midjourney</div>
+              <div class="plat-tag">Best for highest quality artistic and photorealistic image generation</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot image"></div><span>Premium quality aerial and architectural photography style images</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>High-end proposal and report cover page imagery</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Commercial marketing visuals for client presentations</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Brand marketing assets and advertising imagery</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Use prompts from the Design prompt category as inputs</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Access at midjourney.com — paid plans from $10/month</span></div>
+              </div>
+            </div>
+            <div class="plat-card image">
+              <div class="plat-name image">Adobe Firefly</div>
+              <div class="plat-tag">Best for commercially safe image generation and photo editing</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot image"></div><span>Commercially licensed images — safe for client deliverables</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Generative fill to remove or replace parts of aerial photos</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Extend backgrounds on inspection and survey imagery</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Text effects and branded visual elements</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Integrated directly into Adobe Express — no extra app needed</span></div>
+                <div class="plat-item"><div class="plat-dot image"></div><span>Free credits available at firefly.adobe.com</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 4: VIDEO GENERATION -->
+        <div style="margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.06)">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Video Generation</div>
+          <div class="plat-grid">
+            <div class="plat-card chatgpt">
+              <div class="plat-name chatgpt">ChatGPT + Sora</div>
+              <div class="plat-tag">Best for generating short video clips from text prompts</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Generate aerial flyover style video clips for marketing</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Create short social media video content from descriptions</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Property showcase teaser clips for real estate listings</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Storyboard visualisation before a real flight</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Use the Video Script prompt category to write the brief first</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Requires ChatGPT Plus — access at chatgpt.com</span></div>
+              </div>
+            </div>
+            <div class="plat-card video">
+              <div class="plat-name video">Runway</div>
+              <div class="plat-tag">Best for professional AI video generation and editing</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot video"></div><span>Generate cinematic aerial and property showcase videos</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Animate still aerial photos into smooth video clips</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Edit and enhance existing drone footage with AI tools</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Remove objects, extend scenes, change backgrounds</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Export in multiple formats for web, social, and client delivery</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Free trial available at runwayml.com</span></div>
+              </div>
+            </div>
+            <div class="plat-card video">
+              <div class="plat-name video">Canva Video</div>
+              <div class="plat-tag">Best for quick branded video content without technical skills</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot video"></div><span>Social media reels and short-form video from templates</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Add text, music, and branding to aerial footage</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Client presentation videos with narration and slides</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Export directly for Instagram, LinkedIn, and YouTube</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>AI-powered background removal and scene transitions</span></div>
+                <div class="plat-item"><div class="plat-dot video"></div><span>Free plan available at canva.com</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 5: DESIGN TOOLS -->
+        <div style="margin-bottom:40px">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px">Design Tools</div>
+          <div class="plat-grid">
+            <div class="plat-card claude">
+              <div class="plat-name claude">Claude</div>
+              <div class="plat-tag">Best for generating detailed design briefs and specifications</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Full Canva layout specifications with exact dimensions</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Proposal and report cover page design briefs</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Social media visual design system for any post</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Brand marketing asset creation briefs</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Typography hierarchy and color application guidance</span></div>
+                <div class="plat-item"><div class="plat-dot claude"></div><span>Use prompts in the Design category to get started</span></div>
+              </div>
+            </div>
+            <div class="plat-card chatgpt">
+              <div class="plat-name chatgpt">ChatGPT</div>
+              <div class="plat-tag">Best for generating design prompts and visual content briefs</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Generate ready-to-paste Midjourney and Firefly prompts</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Create image concepts and visual direction from a brief</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Write all copy for marketing assets, flyers, and ads</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Generate and edit images directly with DALL-E 3</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Design feedback and iteration suggestions</span></div>
+                <div class="plat-item"><div class="plat-dot chatgpt"></div><span>Recommended model: GPT-4o</span></div>
+              </div>
+            </div>
+            <div class="plat-card design">
+              <div class="plat-name design">Canva</div>
+              <div class="plat-tag">Best free design tool for all Blue Nose marketing materials</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot design"></div><span>Proposal covers, report covers, and client-facing documents</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Social media posts for LinkedIn, Instagram, and Facebook</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Service flyers, door hangers, and local area marketing</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Email newsletter headers and digital advertising banners</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Built-in AI image generation via Magic Media</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Free plan at canva.com — no design experience needed</span></div>
+              </div>
+            </div>
+            <div class="plat-card design">
+              <div class="plat-name design">Adobe Express</div>
+              <div class="plat-tag">Best for professionally polished brand-consistent materials</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot design"></div><span>Professional-grade templates for proposals and reports</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Adobe Firefly AI image generation built directly in</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Background removal and photo enhancement tools</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Brand kit to keep Blue Nose colors and fonts consistent</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>One-click resize for all social media platform dimensions</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Free plan at adobe.com/express</span></div>
+              </div>
+            </div>
+            <div class="plat-card design">
+              <div class="plat-name design">Microsoft Designer</div>
+              <div class="plat-tag">Best for quick branded visuals with Microsoft 365 integration</div>
+              <div class="plat-items">
+                <div class="plat-item"><div class="plat-dot design"></div><span>AI-generated design layouts from a text description</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Social media posts, banners, and marketing materials</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Powered by DALL-E — generate images directly in your designs</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Works with Microsoft 365 — inserts directly into Word and PowerPoint</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Ideal for franchisees already using Microsoft tools</span></div>
+                <div class="plat-item"><div class="plat-dot design"></div><span>Free at designer.microsoft.com</span></div>
+              </div>
             </div>
           </div>
         </div>
